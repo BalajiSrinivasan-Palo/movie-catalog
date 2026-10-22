@@ -1,5 +1,5 @@
 # Movie Catalog: common tasks. Run `make` or `make help` to list them.
-# Needs JDK 21, Node 22 and pnpm. Gradle is used through ./gradlew (create it once with `make wrapper`).
+# Needs JDK 21, Node 22, pnpm and Python 3 (`make doctor` checks them). Gradle is used through ./gradlew.
 # Targets only call the scripts and commands documented in the README; nothing here hides a failure.
 
 .DEFAULT_GOAL := help
@@ -7,7 +7,7 @@ SHELL := /bin/bash
 GRADLE := ./gradlew --console=plain
 FRONTEND := cd frontend &&
 
-.PHONY: help wrapper setup build test streaming backend-test frontend-check frontend-test frontend-build \
+.PHONY: help wrapper doctor setup build test streaming backend-test frontend-check frontend-test frontend-build \
         verify quality format dev dev-check dev-stop seed e2e e2e-mocked perf traceability secrets \
         docker-config docker-up docker-down clean
 
@@ -19,7 +19,13 @@ help: ## List the targets
 wrapper: ## Create the Gradle wrapper once (needs a local Gradle 9.8 or IntelliJ)
 	gradle wrapper --gradle-version 9.8.2
 
-setup: ## Install frontend dependencies and the browser used by Playwright, and the git hooks
+doctor: ## Check the required tools (JDK 21, Node 22, pnpm, Python 3) and say how to install what is missing
+	bash scripts/doctor.sh
+
+# chmod first: a zip download or some file systems drop the executable bit.
+setup: ## Make scripts executable, check tools, then install frontend dependencies, the Playwright browser and the git hooks
+	chmod +x gradlew scripts/*.sh scripts/hooks/*
+	$(MAKE) doctor
 	$(FRONTEND) pnpm install
 	$(FRONTEND) pnpm exec playwright install chromium
 	scripts/install-hooks.sh

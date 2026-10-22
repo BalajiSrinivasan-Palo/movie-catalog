@@ -17,11 +17,24 @@ The diagram is `docs/architecture/architecture.svg` (hand-drawn SVG, edit it dir
 
 ## Run it with make
 
-Prerequisites: JDK 21, Node 22, pnpm 10, and Python 3 (for the repository checks). The Gradle wrapper (`./gradlew`) is in the repository.
+### Starting from a machine with nothing installed
+
+You need git, make, JDK 21, Node 22 or newer, pnpm 10 and Python 3. The Gradle wrapper (`./gradlew`) is in the repository, so Gradle itself is not needed. `make setup` first runs `make doctor` (`scripts/doctor.sh`), which lists what is missing and how to install it, and enables pnpm through Corepack (it ships with Node). It installs nothing system-wide.
+
+| Step         | macOS                            | Ubuntu / Debian                                                                                         | Windows                                                                                                                  |
+| ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| git and make | `xcode-select --install`         | `sudo apt install git make curl python3`                                                                | Use WSL 2 with Ubuntu, then follow the Ubuntu column inside it. The scripts are bash and do not run in plain PowerShell. |
+| JDK 21       | `brew install --cask temurin@21` | `sudo apt install openjdk-21-jdk`                                                                       | inside WSL, as Ubuntu                                                                                                    |
+| Node 22      | `brew install node@22`           | `nvm install 22` ([nvm](https://github.com/nvm-sh/nvm)) or [nodejs.org](https://nodejs.org/en/download) | inside WSL, as Ubuntu                                                                                                    |
+| pnpm 10      | done by `make setup`             | done by `make setup`                                                                                    | done by `make setup`                                                                                                     |
+
+[Homebrew](https://brew.sh) provides `brew` on macOS. Open a new terminal after installing, so the new tools are on your `PATH`. If `make setup` says it cannot enable pnpm, run `sudo corepack enable pnpm` or `npm install -g pnpm@10`. The first `make dev` downloads Gradle and the project's libraries, so it needs internet access and takes a few minutes.
+
+With only Docker installed, `make docker-up` builds and runs everything in containers on http://localhost:8088. This path is optional and not verified (see the targets table).
 
 ```bash
-git clone <repository-url> movie-catalog && cd movie-catalog
-make setup        # once: frontend packages, the Playwright browser and the git hooks
+git clone https://github.com/BalajiSrinivasan-Palo/movie-catalog.git && cd movie-catalog
+make setup        # once: checks the tools, then frontend packages, the Playwright browser and the git hooks
 make dev          # start movie-service, people-service, api-gateway and the frontend in the background
 make dev-check    # wait until all four answer ("all four are up"); fails after 120 s
 make seed         # load the sample films, people, credits and posters (safe to run again)
@@ -39,14 +52,14 @@ make dev-stop     # stop everything that make dev started
 
 With `make dev` running:
 
-| What | URL | Notes |
-|------|-----|-------|
-| **Frontend (the app)** | http://localhost:5173 | SvelteKit app served by Vite |
-| GraphQL API | http://localhost:8080/graphql | `POST` only, JSON body `{"query": ...}`; also reachable as http://localhost:5173/graphql through the proxy. Introspection is on in the `dev` profile only. No GraphiQL page. |
-| Poster images | http://localhost:8080/artwork/{movieId}/thumbnail and `.../original` | Plain `GET` with an ETag; the exact links (with a `?v=` version) come from a movie's `artwork { thumbnailUrl url }` field |
-| api-gateway health | http://localhost:8080/actuator/health | |
-| movie-service health | http://localhost:8081/actuator/health | movie-service's API is gRPC on `localhost:9091`, not HTTP |
-| people-service health | http://localhost:8082/actuator/health | people-service's API is gRPC on `localhost:9092`, not HTTP |
+| What                   | URL                                                                  | Notes                                                                                                                                                                        |
+| ---------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Frontend (the app)** | http://localhost:5173                                                | SvelteKit app served by Vite                                                                                                                                                 |
+| GraphQL API            | http://localhost:8080/graphql                                        | `POST` only, JSON body `{"query": ...}`; also reachable as http://localhost:5173/graphql through the proxy. Introspection is on in the `dev` profile only. No GraphiQL page. |
+| Poster images          | http://localhost:8080/artwork/{movieId}/thumbnail and `.../original` | Plain `GET` with an ETag; the exact links (with a `?v=` version) come from a movie's `artwork { thumbnailUrl url }` field                                                    |
+| api-gateway health     | http://localhost:8080/actuator/health                                |                                                                                                                                                                              |
+| movie-service health   | http://localhost:8081/actuator/health                                | movie-service's API is gRPC on `localhost:9091`, not HTTP                                                                                                                    |
+| people-service health  | http://localhost:8082/actuator/health                                | people-service's API is gRPC on `localhost:9092`, not HTTP                                                                                                                   |
 
 Try the API from a terminal:
 
@@ -58,35 +71,36 @@ curl -s http://localhost:8080/graphql -H 'Content-Type: application/json' -d '{"
 
 `make` (or `make help`) prints this list. Each target runs only the commands shown in this README, so you can also run those directly.
 
-| Target | What it does |
-|--------|--------------|
-| **Run** | |
-| `make setup` | Install frontend packages, the Playwright browser and the git hooks |
-| `make dev` | Start the three services and the Vite dev server in the background |
-| `make dev-check` | Wait until all four parts answer |
-| `make dev-stop` | Stop what `make dev` started |
-| `make seed` | Load the sample data into the running stack (safe to run twice) |
-| **Build and test** | |
-| `make build` | Build backend and frontend (runs the backend tests too) |
-| `make test` | All unit and integration tests (`backend-test` and `frontend-test`) |
-| `make backend-test` | Backend tests, including the memory-bounded upload streaming test |
-| `make streaming` | Only the artwork streaming test (128 MB heap) |
-| `make frontend-check` | Type check and lint the frontend |
-| `make frontend-test` | Frontend unit and component tests with the coverage gate |
-| `make frontend-build` | Static frontend build |
-| `make e2e-mocked` | Layout and accessibility browser tests against a mocked API (no backend needed) |
-| `make e2e` | Browser journeys against the real stack on a fresh temporary data directory |
-| `make perf` | Load 1,000 movies and people and time the API (stack must be running); writes `reports/perf.md` |
-| **Quality gates** | |
-| `make verify` | Every gate that applies; writes `reports/verify-*.log` |
-| `make traceability` | Requirement to story to test check |
-| `make secrets` | Scan the working tree for secrets |
-| `make quality` | ktlint, detekt and the Kover coverage gate (opt-in, unverified; see below) |
-| `make format` | Fix Kotlin and frontend formatting |
-| **Other** | |
-| `make wrapper` | Re-create the Gradle wrapper (needs a local Gradle 9.8) |
-| `make docker-config`, `make docker-up`, `make docker-down` | Optional containers, app on http://localhost:8088 (unverified, see below) |
-| `make clean` | Remove build output (keeps `data/` and `reports/`) |
+| Target                                                     | What it does                                                                                    |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Run**                                                    |                                                                                                 |
+| `make doctor`                                              | Check JDK 21, Node 22, pnpm and Python 3; print install commands for what is missing            |
+| `make setup`                                               | Run `make doctor`, then install frontend packages, the Playwright browser and the git hooks     |
+| `make dev`                                                 | Start the three services and the Vite dev server in the background                              |
+| `make dev-check`                                           | Wait until all four parts answer                                                                |
+| `make dev-stop`                                            | Stop what `make dev` started                                                                    |
+| `make seed`                                                | Load the sample data into the running stack (safe to run twice)                                 |
+| **Build and test**                                         |                                                                                                 |
+| `make build`                                               | Build backend and frontend (runs the backend tests too)                                         |
+| `make test`                                                | All unit and integration tests (`backend-test` and `frontend-test`)                             |
+| `make backend-test`                                        | Backend tests, including the memory-bounded upload streaming test                               |
+| `make streaming`                                           | Only the artwork streaming test (128 MB heap)                                                   |
+| `make frontend-check`                                      | Type check and lint the frontend                                                                |
+| `make frontend-test`                                       | Frontend unit and component tests with the coverage gate                                        |
+| `make frontend-build`                                      | Static frontend build                                                                           |
+| `make e2e-mocked`                                          | Layout and accessibility browser tests against a mocked API (no backend needed)                 |
+| `make e2e`                                                 | Browser journeys against the real stack on a fresh temporary data directory                     |
+| `make perf`                                                | Load 1,000 movies and people and time the API (stack must be running); writes `reports/perf.md` |
+| **Quality gates**                                          |                                                                                                 |
+| `make verify`                                              | Every gate that applies; writes `reports/verify-*.log`                                          |
+| `make traceability`                                        | Requirement to story to test check                                                              |
+| `make secrets`                                             | Scan the working tree for secrets                                                               |
+| `make quality`                                             | ktlint, detekt and the Kover coverage gate (opt-in, unverified; see below)                      |
+| `make format`                                              | Fix Kotlin and frontend formatting                                                              |
+| **Other**                                                  |                                                                                                 |
+| `make wrapper`                                             | Re-create the Gradle wrapper (needs a local Gradle 9.8)                                         |
+| `make docker-config`, `make docker-up`, `make docker-down` | Optional containers, app on http://localhost:8088 (unverified, see below)                       |
+| `make clean`                                               | Remove build output (keeps `data/` and `reports/`)                                              |
 
 ## Status of this repository
 
@@ -172,17 +186,17 @@ These are choices, not accidents. They are also listed in `docs/requirements/BRD
 
 ## Repository map
 
-| Path | What is there |
-|------|---------------|
-| `api-gateway/`, `movie-service/`, `people-service/` | The three Spring Boot services |
-| `contracts/` | The `.proto` files shared by the services, with generated code |
-| `service-support/` | Small shared code (error mapping, logging, correlation ids) |
-| `frontend/` | SvelteKit app (`src/lib` holds API client, stores, components, views), unit tests and `e2e/` |
-| `docs/` | Requirements, architecture, ADRs, backlog and stories, plans, decisions log |
-| `Makefile`, `compose.yaml`, `docker/` | Task shortcuts; optional container setup |
-| `scripts/` | `verify.sh`, `dev.sh`, `seed.sh`, `e2e.sh`, `perf/`, repository checks, git hooks |
-| `reports/` | Evidence: command output and reports from the gates |
-| `CLAUDE.md`, `.claude/` | Rules, skills and agents used while building |
+| Path                                                | What is there                                                                                |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `api-gateway/`, `movie-service/`, `people-service/` | The three Spring Boot services                                                               |
+| `contracts/`                                        | The `.proto` files shared by the services, with generated code                               |
+| `service-support/`                                  | Small shared code (error mapping, logging, correlation ids)                                  |
+| `frontend/`                                         | SvelteKit app (`src/lib` holds API client, stores, components, views), unit tests and `e2e/` |
+| `docs/`                                             | Requirements, architecture, ADRs, backlog and stories, plans, decisions log                  |
+| `Makefile`, `compose.yaml`, `docker/`               | Task shortcuts; optional container setup                                                     |
+| `scripts/`                                          | `verify.sh`, `dev.sh`, `seed.sh`, `e2e.sh`, `perf/`, repository checks, git hooks            |
+| `reports/`                                          | Evidence: command output and reports from the gates                                          |
+| `CLAUDE.md`, `.claude/`                             | Rules, skills and agents used while building                                                 |
 
 ## How AI was used
 
@@ -199,11 +213,11 @@ This project was built with Claude Code as a coding agent, inside a fixed proces
 
 ### The story pipeline: one agent per step (D26)
 
-| Step | Agent | Reads | Writes | Then |
-|------|-------|-------|--------|------|
-| 1 Plan | `story-planner` | the story, its requirements, the architecture and ADRs, the code it will change | `docs/plans/S-xxx.md` (status Draft) | I answer its open questions and approve the plan |
-| 2 Build | `backend-implementer` and/or `frontend-implementer`, as the plan assigns | the approved plan and the story | code, tests, logs in `reports/S-xxx/`, and `reports/S-xxx/implementation.md` (files changed, AC-to-test map, commands) | I run the backend Gradle commands and save the output (D15) |
-| 3 Review | `reviewer` (plus `security-reviewer` for uploads, validation, CORS or GraphQL limits) | the story, the plan, `implementation.md`, the changed files and the logs | `reports/S-xxx/review.md`: AC table, plan-task table, findings with file and line, verdict | I pick which findings go back to step 2; APPROVED with evidence marks the story Done |
+| Step     | Agent                                                                                 | Reads                                                                           | Writes                                                                                                                 | Then                                                                                 |
+| -------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| 1 Plan   | `story-planner`                                                                       | the story, its requirements, the architecture and ADRs, the code it will change | `docs/plans/S-xxx.md` (status Draft)                                                                                   | I answer its open questions and approve the plan                                     |
+| 2 Build  | `backend-implementer` and/or `frontend-implementer`, as the plan assigns              | the approved plan and the story                                                 | code, tests, logs in `reports/S-xxx/`, and `reports/S-xxx/implementation.md` (files changed, AC-to-test map, commands) | I run the backend Gradle commands and save the output (D15)                          |
+| 3 Review | `reviewer` (plus `security-reviewer` for uploads, validation, CORS or GraphQL limits) | the story, the plan, `implementation.md`, the changed files and the logs        | `reports/S-xxx/review.md`: AC table, plan-task table, findings with file and line, verdict                             | I pick which findings go back to step 2; APPROVED with evidence marks the story Done |
 
 - **The hand-offs are files, not memory:** nothing is committed yet, so there is no git diff. The implementation report's list of changed files is what the reviewer reads.
 - **Every artefact names its author** (`Planned by:`, `Implemented by:`, `Reviewed by:`). The reviewer stops if it finds its own name as planner or implementer.
@@ -214,12 +228,12 @@ This pipeline applies from the next story on. S-701 and S-702 were planned and b
 
 ### How an agent is started
 
-| Way | Example | How reliable |
-|-----|---------|--------------|
-| @-mention | `@agent-reviewer review S-701` | always runs that agent |
-| Name it in the request | "Use the story-planner agent to plan S-703" | usually followed |
-| Automatic | a task that matches an agent's `description`, such as "Use when a story has no plan yet" for `story-planner` | Claude decides; not guaranteed |
-| Whole session as one agent (terminal) | `claude --agent reviewer` | the main session itself runs as that agent |
+| Way                                   | Example                                                                                                      | How reliable                               |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| @-mention                             | `@agent-reviewer review S-701`                                                                               | always runs that agent                     |
+| Name it in the request                | "Use the story-planner agent to plan S-703"                                                                  | usually followed                           |
+| Automatic                             | a task that matches an agent's `description`, such as "Use when a story has no plan yet" for `story-planner` | Claude decides; not guaranteed             |
+| Whole session as one agent (terminal) | `claude --agent reviewer`                                                                                    | the main session itself runs as that agent |
 
 In the pipeline the main session starts each agent with only the story ID, for example "Review S-701", and the agent reads everything else from the files. Editing an agent file takes effect within seconds, without a restart (sub-agents docs: https://code.claude.com/docs/en/sub-agents.md).
 
@@ -254,30 +268,30 @@ Everything is plain Markdown or a short shell script, so it can be read and revi
 
 ### Which agent does which part
 
-| Agent | Used for | Tools it is allowed | Skills it names | Evidence it ran |
-|-------|----------|---------------------|-----------------|-----------------|
-| `story-planner` | **Pipeline step 1:** turns one story into `docs/plans/S-xxx.md`; never writes code | Read, search, edit, shell (read-only commands) | names the plan's implementers | new in D26, not run yet |
-| `requirements-analyst` | Analysis, BRD, NFR, stories; keeps the traceability matrix consistent; lists ambiguities for the owner instead of deciding them | Read, search, edit, shell | none (runs `scripts/check_traceability.py`) | no separate record |
-| `architect` | Architecture, ADRs, service boundaries, contract changes | Read, search, edit (no shell) | none | no separate record |
-| `grpc-graphql-specialist` | Protobuf and GraphQL contracts, error mapping (ADR-005), upload streaming (ADR-006) | Read, search, edit, shell | none (the contract skills apply by their description) | no separate record |
-| `backend-implementer` | **Pipeline step 2:** builds the backend part of an approved plan, with tests, and writes `implementation.md` | Read, search, edit, shell | `kotlin-spring-boot`, `grpc-contracts`, `graphql-schema` | no separate record |
-| `frontend-implementer` | **Pipeline step 2:** builds the frontend part of an approved plan, with loading, empty, error and success states, and writes `implementation.md` | Read, search, edit, shell | `sveltekit-typescript` | no separate record |
-| `test-engineer` | A named test for every acceptance criterion and edge case | Read, search, edit, shell | none | no separate record |
-| `reviewer` | **Pipeline step 3:** compares the code with the story and the plan, writes `review.md` with a verdict, and is the only one who sets Done | Read, search, shell, write (its instructions allow only the review report and status lines) | none | `reports/review-independent-1.md`, `reports/S-701/review.md`, `reports/S-702/review.md` |
-| `security-reviewer` | Uploads, validation, injection, CORS, headers, GraphQL limits, dependencies | **Read-only** | none | `reports/security-review-1.md`, `reports/security-review-2.md` |
+| Agent                     | Used for                                                                                                                                         | Tools it is allowed                                                                         | Skills it names                                          | Evidence it ran                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `story-planner`           | **Pipeline step 1:** turns one story into `docs/plans/S-xxx.md`; never writes code                                                               | Read, search, edit, shell (read-only commands)                                              | names the plan's implementers                            | new in D26, not run yet                                                                 |
+| `requirements-analyst`    | Analysis, BRD, NFR, stories; keeps the traceability matrix consistent; lists ambiguities for the owner instead of deciding them                  | Read, search, edit, shell                                                                   | none (runs `scripts/check_traceability.py`)              | no separate record                                                                      |
+| `architect`               | Architecture, ADRs, service boundaries, contract changes                                                                                         | Read, search, edit (no shell)                                                               | none                                                     | no separate record                                                                      |
+| `grpc-graphql-specialist` | Protobuf and GraphQL contracts, error mapping (ADR-005), upload streaming (ADR-006)                                                              | Read, search, edit, shell                                                                   | none (the contract skills apply by their description)    | no separate record                                                                      |
+| `backend-implementer`     | **Pipeline step 2:** builds the backend part of an approved plan, with tests, and writes `implementation.md`                                     | Read, search, edit, shell                                                                   | `kotlin-spring-boot`, `grpc-contracts`, `graphql-schema` | no separate record                                                                      |
+| `frontend-implementer`    | **Pipeline step 2:** builds the frontend part of an approved plan, with loading, empty, error and success states, and writes `implementation.md` | Read, search, edit, shell                                                                   | `sveltekit-typescript`                                   | no separate record                                                                      |
+| `test-engineer`           | A named test for every acceptance criterion and edge case                                                                                        | Read, search, edit, shell                                                                   | none                                                     | no separate record                                                                      |
+| `reviewer`                | **Pipeline step 3:** compares the code with the story and the plan, writes `review.md` with a verdict, and is the only one who sets Done         | Read, search, shell, write (its instructions allow only the review report and status lines) | none                                                     | `reports/review-independent-1.md`, `reports/S-701/review.md`, `reports/S-702/review.md` |
+| `security-reviewer`       | Uploads, validation, injection, CORS, headers, GraphQL limits, dependencies                                                                      | **Read-only**                                                                               | none                                                     | `reports/security-review-1.md`, `reports/security-review-2.md`                          |
 
 "No separate record" means no report in `reports/` names that agent: the work exists, but nothing shows whether a subagent or the main session did it. From D26 on, every plan, implementation report and review names its agent, so this column fills in as stories go through the pipeline. The `security-reviewer` cannot edit or write files at all. The `reviewer` can write, so it can save its own report, but cannot edit code; keeping it to the report is an instruction, not a hard limit. The later visual work (S-701, S-702) was planned and implemented in the main session, before D26, with the skills loaded directly; the two reviewers then reviewed it.
 
 ### How skills are picked up
 
-| Skill | Picked up when (its description) | Used by |
-|-------|----------------------------------|---------|
-| `story-workflow` | starting, implementing or closing any story in `docs/backlog` | the main session, to run the pipeline |
-| `quality-gates` | before declaring any work complete | the implementers, before they hand over |
-| `kotlin-spring-boot` | writing or reviewing backend code | `backend-implementer` |
-| `grpc-contracts` | touching `contracts/` or any gRPC call | `backend-implementer`, `grpc-graphql-specialist` |
-| `graphql-schema` | editing `schema.graphqls` or gateway code | `backend-implementer`, `grpc-graphql-specialist` |
-| `sveltekit-typescript` | writing or reviewing frontend code, components, routes or tests | `frontend-implementer` |
+| Skill                  | Picked up when (its description)                                | Used by                                          |
+| ---------------------- | --------------------------------------------------------------- | ------------------------------------------------ |
+| `story-workflow`       | starting, implementing or closing any story in `docs/backlog`   | the main session, to run the pipeline            |
+| `quality-gates`        | before declaring any work complete                              | the implementers, before they hand over          |
+| `kotlin-spring-boot`   | writing or reviewing backend code                               | `backend-implementer`                            |
+| `grpc-contracts`       | touching `contracts/` or any gRPC call                          | `backend-implementer`, `grpc-graphql-specialist` |
+| `graphql-schema`       | editing `schema.graphqls` or gateway code                       | `backend-implementer`, `grpc-graphql-specialist` |
+| `sveltekit-typescript` | writing or reviewing frontend code, components, routes or tests | `frontend-implementer`                           |
 
 A skill reaches the model in one of three ways:
 

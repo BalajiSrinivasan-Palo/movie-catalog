@@ -143,14 +143,6 @@ node scripts/perf/perf.mjs     # loads 1,000 movies and people, writes reports/p
 
 `scripts/verify.sh` never hides a failure. A gate that cannot run is printed as NOT RUN, and the last line says so.
 
-### Static analysis and coverage (`make quality`)
-
-ktlint, detekt and a Kover line-coverage gate (80 percent, NFR-TEST-02) run through an opt-in Gradle init script, `gradle/quality.init.gradle.kts`, with settings in `.editorconfig` and `config/detekt/detekt.yml`. They are not part of `./gradlew build` yet because the plugin versions were chosen without being able to resolve them. After one green `make quality` on a real machine, move them into the normal build (ADR-013) and save the output in `reports/`. Until then this gate is **unverified**, and `scripts/verify.sh` does not run it.
-
-### Containers (optional, unverified)
-
-`docker compose up --build` builds and starts all four parts and serves the app at http://localhost:8088 (`compose.yaml`, `docker/`). Only `docker compose config` was run when this was written, because there was no Docker daemon; the images have never been built. The supported way to run the project is the one above, which needs no Docker (NFR-OPS-01). See D19 in the decisions log.
-
 ## What the app does
 
 - Movies: a poster grid with paging, sort by title or year, filter by one or more genres (a movie matches any of them) and by a year range chosen by typing or from a year picker; a detail page with the poster, facts and cast and crew; create, edit, delete. Title, year, runtime, synopsis and genres are validated in the browser and again on the server.
@@ -159,29 +151,6 @@ ktlint, detekt and a Kover line-coverage gate (80 percent, NFR-TEST-02) run thro
 - Artwork: drag a JPEG, PNG or WebP up to 5 MiB onto the drop zone, or choose the file, with a progress bar and a cancel button. The server checks the real file type from its first bytes, limits the size while reading, limits the dimensions, makes a 320 px thumbnail, and replaces the old image only after the new one is stored. Lists show thumbnails; the detail page shows the original.
 - Search: one box in the header with a scope menu (All, Titles, or People for cast and crew); case-insensitive substring match on movie title, synopsis and genre, and on person name and biography. `%`, `_` and `\` are matched literally. Results are grouped, with "Show more".
 - Every action shows what is happening (loading, saving, uploading) and what went wrong, in plain words, without losing what you typed. The pages work from 360 px wide, and the browser tests check keyboard use, target size and axe rules.
-
-## Design in short
-
-The reasons are in `docs/adr/`. The ones a reader usually asks about:
-
-- **Three services (ADR-001).** The assessment asks for at least two. People and movies are separate domains, and the gateway keeps the browser away from both.
-- **Credits live in movie-service (ADR-003).** The gateway fills in person names with one batched call to people-service per page. Deleting a person asks movie-service whether credits exist.
-- **Errors (ADR-005).** Services answer with a gRPC status plus a typed detail. The gateway turns that into one of five GraphQL codes with a message key, field errors and a correlation id. The frontend turns keys into text; stack traces never reach the browser.
-- **Uploads (ADR-006).** The browser sends a GraphQL multipart request, as in the GraphQL multipart request spec. The gateway streams the file to movie-service over gRPC in 64 KiB chunks. A custom header is required, which blocks cross-site form posts.
-- **Images (ADR-007).** Image bytes are fetched with plain cacheable GET requests (`/artwork/{id}/thumbnail` and `/original`) with an ETag, so the browser can cache them. All other data goes through `/graphql`.
-- **Search (ADR-009).** Each service searches its own data; the gateway runs both in parallel and merges. No ranking and no typo tolerance.
-
-## Known limitations
-
-These are choices, not accidents. They are also listed in `docs/requirements/BRD.md`.
-
-- No login and no roles (D2). Anyone who can reach the gateway can change data. CORS allows one configured origin.
-- Two people editing the same record: the last save wins.
-- gRPC between services is plain text. Fine on one machine, not for a network you do not control.
-- H2 files mean one instance per service. No clustering.
-- No rate limiting.
-- Deleting a person checks for credits and then deletes, as two steps in two services (BR-13). A credit added in that gap could be orphaned. The page shows such a credit as "person not found" instead of failing.
-- Search is substring only and has no ranking.
 
 ## Repository map
 
@@ -279,8 +248,6 @@ Everything is plain Markdown or a short shell script, so it can be read and revi
 | `reviewer`                | **Pipeline step 3:** compares the code with the story and the plan, writes `review.md` with a verdict, and is the only one who sets Done         | Read, search, shell, write (its instructions allow only the review report and status lines) | none                                                     | `reports/review-independent-1.md`, `reports/S-701/review.md`, `reports/S-702/review.md` |
 | `security-reviewer`       | Uploads, validation, injection, CORS, headers, GraphQL limits, dependencies                                                                      | **Read-only**                                                                               | none                                                     | `reports/security-review-1.md`, `reports/security-review-2.md`                          |
 
-"No separate record" means no report in `reports/` names that agent: the work exists, but nothing shows whether a subagent or the main session did it. From D26 on, every plan, implementation report and review names its agent, so this column fills in as stories go through the pipeline. The `security-reviewer` cannot edit or write files at all. The `reviewer` can write, so it can save its own report, but cannot edit code; keeping it to the report is an instruction, not a hard limit. The later visual work (S-701, S-702) was planned and implemented in the main session, before D26, with the skills loaded directly; the two reviewers then reviewed it.
-
 ### How skills are picked up
 
 | Skill                  | Picked up when (its description)                                | Used by                                          |
@@ -307,7 +274,3 @@ Outside the pipeline, the main session delegates to an agent whose description f
 - **git pre-commit hook:** runs `scripts/verify.sh`, the same gates as CI.
 - **Traceability:** `scripts/check_traceability.py` fails if a requirement has no story, or a BRD acceptance criterion is not owned by exactly one story.
 - **Evidence:** command output lives in `reports/`. When Gradle could not run in the AI's environment, backend results were marked unverified until I ran the commands myself (D15).
-
-### My responsibility
-
-I read the code and can explain each part. Where a choice looked odd, I asked for the reason and recorded it in the decisions log.

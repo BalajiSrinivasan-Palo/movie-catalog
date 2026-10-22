@@ -1,0 +1,74 @@
+deleting 30 movies and 40 people (owner request, 2026-10-22)
+deleted movie  The Broken Mirror (1984)
+deleted movie  The Broken Orchard (2002)
+deleted movie  The Broken Voyage (2020)
+deleted movie  The Burning Orchard (1978)
+deleted movie  The Crimson Harbor (1995)
+deleted movie  The Distant Harbor (1996)
+deleted movie  The Distant Lantern (1982)
+deleted movie  The Distant Station (2010)
+deleted movie  The Electric Engine (1987)
+deleted movie  The Electric Harbor (2004)
+deleted movie  The Golden Horizon (1989)
+deleted movie  The Golden Horizon (1998)
+deleted movie  The Golden Horizon (2011)
+deleted movie  The Hidden Orchard (1986)
+deleted movie  The Hollow Horizon (1984)
+deleted movie  The Hollow Kingdom (1990)
+deleted movie  The Hollow Letter (2015)
+deleted movie  The Iron Archive (2000)
+deleted movie  The Iron River (2004)
+deleted movie  The Midnight Bridge (2019)
+deleted movie  The Midnight Kingdom (2009)
+deleted movie  The Midnight Orchard (2019)
+deleted movie  The Paper Mirror (2012)
+deleted movie  The Paper River (1984)
+deleted movie  The Silent Garden (1985)
+deleted movie  The Wild Archive (2022)
+deleted movie  The Wild Letter (1986)
+deleted movie  The Wild Station (1994)
+deleted movie  The Wild Station (2009)
+deleted movie  The Broken Garden (2007)
+deleted person Ada Garrow
+deleted person Ada Thorne
+deleted person Bruno Hale
+deleted person Bruno Marlowe
+deleted person Bruno Thorne
+deleted person Chiara Alder
+deleted person Chiara Garrow
+deleted person Dev Ellery
+deleted person Dev Garrow
+deleted person Elena Bellamy
+deleted person Elena Fontaine
+deleted person Elena Garrow
+deleted person Elena Novak
+deleted person Greta Castell
+deleted person Greta Ivers
+deleted person Greta Sato
+deleted person Ines Keane
+deleted person Jonas Dorsey
+deleted person Jonas Garrow
+deleted person Jonas Jarrow
+deleted person Jonas Lindqvist
+deleted person Liam Castell
+deleted person Liam Lindqvist
+deleted person Mina Okafor
+deleted person Nico Quarles
+deleted person Nico Thorne
+deleted person Pavel Fontaine
+deleted person Pavel Lindqvist
+deleted person Quinn Thorne
+deleted person Rosa Dorsey
+deleted person Rosa Keane
+deleted person Rosa Okafor
+deleted person Sven Lindqvist
+deleted person Tara Castell
+deleted person Tara Dorsey
+deleted person Tara Hale
+deleted person Tara Lindqvist
+deleted person Tara Novak
+deleted person Tara Pryce
+deleted person Tara Quarles
+done
+
+Verification (2026-10-22 14:55): movies 10 (the ten real films, each with a JPEG poster and credits); people 42 (41 from scripts/seed/films.mjs plus one added by the owner); invented people left 0. Artwork store: 20 files (10 originals, 10 thumbnails), all .jpg. Files are named by artwork id, not movie id, so they were matched by size: the 10 original files' byte sizes equal the 10 remaining movies' recorded artwork sizes exactly. Every deleted movie had a PNG, and no PNG is left. 30 empty shard folders remain (harmless). (Corrected: an earlier version of this line claimed the match before it had been checked.)

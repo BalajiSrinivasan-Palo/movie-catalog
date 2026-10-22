@@ -1,0 +1,447 @@
+scripts/e2e.sh
+backend up
+? Verifying lockfile against supply-chain policies (327 entries)...
+✗ Lockfile failed supply-chain policy check (327 entries in 1.2s)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 17 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-21T13:00:19.768Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-21T13:06:13.914Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-21T12:59:22.386Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-21T13:01:06.575Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-21T13:01:42.301Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-21T13:00:09.322Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-21T12:59:38.024Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-21T12:59:52.371Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-21T13:01:04.242Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-21T13:05:45.436Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-21T13:02:05.003Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-21T13:06:47.340Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-21T13:00:55.814Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-21T13:01:15.215Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-21T13:01:16.798Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:10.837Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z, within the minimumReleaseAge cutoff
+      (2026-10-21T08:35:10.837Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T08:35:10.837Z)
+  help: The lockfile contains entries that the active policies reject. This can mean the lockfile is stale, or that
+        someone committed a lockfile that bypassed the policy locally — inspect recent changes to pnpm-lock.yaml
+        before trusting it. If the changes look expected, run "pnpm clean --lockfile" and then "pnpm install" to
+        rebuild from a fresh resolution. If the fresh resolution still fails and you trust the affected packages,
+        relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+$ vite build
+? Verifying lockfile against supply-chain policies (327 entries)...
+✗ Lockfile failed supply-chain policy check (327 entries in 1.2s)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 17 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-21T13:00:19.768Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-21T13:06:13.914Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-21T12:59:22.386Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-21T13:01:06.575Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-21T13:01:42.301Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-21T13:00:09.322Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-21T12:59:38.024Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-21T12:59:52.371Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-21T13:01:04.242Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-21T13:05:45.436Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-21T13:02:05.003Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-21T13:06:47.340Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-21T13:00:55.814Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-21T13:01:15.215Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-21T13:01:16.798Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:19.075Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z, within the minimumReleaseAge cutoff
+      (2026-10-21T08:35:19.075Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T08:35:19.075Z)
+  help: The lockfile contains entries that the active policies reject. This can mean the lockfile is stale, or that
+        someone committed a lockfile that bypassed the policy locally — inspect recent changes to pnpm-lock.yaml
+        before trusting it. If the changes look expected, run "pnpm clean --lockfile" and then "pnpm install" to
+        rebuild from a fresh resolution. If the fresh resolution still fails and you trust the affected packages,
+        relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+$ node ../scripts/seed/seed.mjs
+Seeding http://localhost:8080 ...
+people: 53 created, 0 already there
+movies: 12 created, 0 already there; posters uploaded: 12, missing local posters: 0
+credits: 68 created, 0 already there
+Done. {"peopleCreated":53,"peopleSkipped":0,"moviesCreated":12,"moviesSkipped":0,"creditsCreated":68,"creditsSkipped":0,"postersUploaded":12,"postersMissing":0}
+? Verifying lockfile against supply-chain policies (327 entries)...
+✗ Lockfile failed supply-chain policy check (327 entries in 1.2s)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 17 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-21T13:00:19.768Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-21T13:06:13.914Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-21T12:59:22.386Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-21T13:01:06.575Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-21T13:01:42.301Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-21T13:00:09.322Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-21T12:59:38.024Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-21T12:59:52.371Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-21T13:01:04.242Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-21T13:05:45.436Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-21T13:02:05.003Z, within the minimumReleaseAge
+      cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-21T13:06:47.340Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-21T13:00:55.814Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-21T13:01:15.215Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-21T13:01:16.798Z, within the
+      minimumReleaseAge cutoff (2026-10-21T08:35:24.280Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z, within the minimumReleaseAge cutoff
+      (2026-10-21T08:35:24.280Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T08:35:24.280Z)
+  help: The lockfile contains entries that the active policies reject. This can mean the lockfile is stale, or that
+        someone committed a lockfile that bypassed the policy locally — inspect recent changes to pnpm-lock.yaml
+        before trusting it. If the changes look expected, run "pnpm clean --lockfile" and then "pnpm install" to
+        rebuild from a fresh resolution. If the fresh resolution still fails and you trust the affected packages,
+        relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+
+Running 21 tests using 1 worker
+
+  ✘   1 [stack] › e2e/stack/feedback.e2e.ts:128:2 › create movie: slow response shows pending and blocks a second submit (15.5s)
+  ✓   2 [stack] › e2e/stack/feedback.e2e.ts:146:2 › create movie: server error shows a readable message and keeps the input (293ms)
+  ✘   3 [stack] › e2e/stack/feedback.e2e.ts:128:2 › create person: slow response shows pending and blocks a second submit (15.2s)
+  ✓   4 [stack] › e2e/stack/feedback.e2e.ts:146:2 › create person: server error shows a readable message and keeps the input (319ms)
+  ✘   5 [stack] › e2e/stack/feedback.e2e.ts:128:2 › update movie: slow response shows pending and blocks a second submit (15.2s)
+  ✓   6 [stack] › e2e/stack/feedback.e2e.ts:146:2 › update movie: server error shows a readable message and keeps the input (402ms)
+  ✘   7 [stack] › e2e/stack/feedback.e2e.ts:128:2 › update person: slow response shows pending and blocks a second submit (15.3s)
+  ✓   8 [stack] › e2e/stack/feedback.e2e.ts:146:2 › update person: server error shows a readable message and keeps the input (338ms)
+  ✘   9 [stack] › e2e/stack/feedback.e2e.ts:128:2 › delete movie: slow response shows pending and blocks a second submit (15.2s)
+  ✘  10 [stack] › e2e/stack/feedback.e2e.ts:146:2 › delete movie: server error shows a readable message and keeps the input (5.3s)
+  ✘  11 [stack] › e2e/stack/feedback.e2e.ts:128:2 › delete person: slow response shows pending and blocks a second submit (15.5s)
+  ✘  12 [stack] › e2e/stack/feedback.e2e.ts:146:2 › delete person: server error shows a readable message and keeps the input (5.3s)
+  ✘  13 [stack] › e2e/stack/feedback.e2e.ts:160:1 › add credit: error keeps the chosen person and role; slow shows pending (294ms)
+  ✓  14 [stack] › e2e/stack/feedback.e2e.ts:190:1 › lists and detail pages: error shows a message with Try again; slow shows a loading indicator (399ms)
+  ✓  15 [stack] › e2e/stack/feedback.e2e.ts:214:1 › search: error shows a message with retry; slow shows a loading indicator (155ms)
+  ✓  16 [stack] › e2e/stack/feedback.e2e.ts:234:1 › upload: server error shows the message and Retry; the chosen file is not lost (179ms)
+  ✘  17 [stack] › e2e/stack/journeys.e2e.ts:14:1 › UJ-01/02: create a movie, add a credit, upload artwork with visible progress (325ms)
+  ✓  18 [stack] › e2e/stack/journeys.e2e.ts:87:1 › UJ-02: an unreadable image is rejected with a readable message and old artwork stays (495ms)
+  ✓  19 [stack] › e2e/stack/journeys.e2e.ts:102:1 › UJ-06: search finds movies and people by text, and shows an empty state (1.8s)
+  ✓  20 [stack] › e2e/stack/journeys.e2e.ts:121:1 › UJ-07: a person with credits cannot be deleted; the blocking movie is shown (734ms)
+  ✓  21 [stack] › e2e/stack/journeys.e2e.ts:158:1 › delete a movie removes it and its artwork URL (330ms)
+
+
+  1) [stack] › e2e/stack/feedback.e2e.ts:128:2 › create movie: slow response shows pending and blocks a second submit 
+
+    Error: expect(locator).not.toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: /Create movie/ })
+    Expected: not "true"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toHaveAttribute" getByRole('button', { name: /Create movie/ }) with timeout 15000ms
+      - waiting for getByRole('button', { name: /Create movie/ })
+        2 × locator resolved to <button type="submit" aria-busy="true" aria-disabled="true" class="btn primary svelte-18sv61c">…</button>
+          - unexpected value "true"
+
+
+      140 | 		await button.click({ force: true });
+      141 | 		fault.release();
+    > 142 | 		await expect(button).not.toHaveAttribute('aria-busy', 'true', { timeout: 15_000 });
+          | 		                         ^
+      143 | 		expect(fault.hits(), 'exactly one request reached the server').toBe(1);
+      144 | 	});
+      145 |
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/feedback.e2e.ts:142:28
+
+    Error Context: test-results/feedback.e2e.ts-create-mov-e1cae--and-blocks-a-second-submit-stack/error-context.md
+
+  2) [stack] › e2e/stack/feedback.e2e.ts:128:2 › create person: slow response shows pending and blocks a second submit 
+
+    Error: expect(locator).not.toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: /Create person/ })
+    Expected: not "true"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toHaveAttribute" getByRole('button', { name: /Create person/ }) with timeout 15000ms
+      - waiting for getByRole('button', { name: /Create person/ })
+        2 × locator resolved to <button type="submit" aria-busy="true" aria-disabled="true" class="btn primary svelte-18sv61c">…</button>
+          - unexpected value "true"
+
+
+      140 | 		await button.click({ force: true });
+      141 | 		fault.release();
+    > 142 | 		await expect(button).not.toHaveAttribute('aria-busy', 'true', { timeout: 15_000 });
+          | 		                         ^
+      143 | 		expect(fault.hits(), 'exactly one request reached the server').toBe(1);
+      144 | 	});
+      145 |
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/feedback.e2e.ts:142:28
+
+    Error Context: test-results/feedback.e2e.ts-create-per-29240--and-blocks-a-second-submit-stack/error-context.md
+
+  3) [stack] › e2e/stack/feedback.e2e.ts:128:2 › update movie: slow response shows pending and blocks a second submit 
+
+    Error: expect(locator).not.toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: /Save changes/ })
+    Expected: not "true"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toHaveAttribute" getByRole('button', { name: /Save changes/ }) with timeout 15000ms
+      - waiting for getByRole('button', { name: /Save changes/ })
+        3 × locator resolved to <button type="submit" aria-busy="true" aria-disabled="true" class="btn primary svelte-18sv61c">…</button>
+          - unexpected value "true"
+
+
+      140 | 		await button.click({ force: true });
+      141 | 		fault.release();
+    > 142 | 		await expect(button).not.toHaveAttribute('aria-busy', 'true', { timeout: 15_000 });
+          | 		                         ^
+      143 | 		expect(fault.hits(), 'exactly one request reached the server').toBe(1);
+      144 | 	});
+      145 |
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/feedback.e2e.ts:142:28
+
+    Error Context: test-results/feedback.e2e.ts-update-mov-30daf--and-blocks-a-second-submit-stack/error-context.md
+
+  4) [stack] › e2e/stack/feedback.e2e.ts:128:2 › update person: slow response shows pending and blocks a second submit 
+
+    Error: expect(locator).not.toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: /Save changes/ })
+    Expected: not "true"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toHaveAttribute" getByRole('button', { name: /Save changes/ }) with timeout 15000ms
+      - waiting for getByRole('button', { name: /Save changes/ })
+        2 × locator resolved to <button type="submit" aria-busy="true" aria-disabled="true" class="btn primary svelte-18sv61c">…</button>
+          - unexpected value "true"
+
+
+      140 | 		await button.click({ force: true });
+      141 | 		fault.release();
+    > 142 | 		await expect(button).not.toHaveAttribute('aria-busy', 'true', { timeout: 15_000 });
+          | 		                         ^
+      143 | 		expect(fault.hits(), 'exactly one request reached the server').toBe(1);
+      144 | 	});
+      145 |
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/feedback.e2e.ts:142:28
+
+    Error Context: test-results/feedback.e2e.ts-update-per-0bd6f--and-blocks-a-second-submit-stack/error-context.md
+
+  5) [stack] › e2e/stack/feedback.e2e.ts:128:2 › delete movie: slow response shows pending and blocks a second submit 
+
+    Error: expect(locator).not.toHaveAttribute(expected) failed
+
+    Locator: getByRole('dialog').getByRole('button', { name: /Delete/ })
+    Expected: not "true"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toHaveAttribute" getByRole('dialog').getByRole('button', { name: /Delete/ }) with timeout 15000ms
+      - waiting for getByRole('dialog').getByRole('button', { name: /Delete/ })
+        2 × locator resolved to <button type="button" aria-busy="true" aria-disabled="true" class="btn danger svelte-18sv61c">…</button>
+          - unexpected value "true"
+
+
+      140 | 		await button.click({ force: true });
+      141 | 		fault.release();
+    > 142 | 		await expect(button).not.toHaveAttribute('aria-busy', 'true', { timeout: 15_000 });
+          | 		                         ^
+      143 | 		expect(fault.hits(), 'exactly one request reached the server').toBe(1);
+      144 | 	});
+      145 |
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/feedback.e2e.ts:142:28
+
+    Error Context: test-results/feedback.e2e.ts-delete-mov-dbebf--and-blocks-a-second-submit-stack/error-context.md
+
+  6) [stack] › e2e/stack/feedback.e2e.ts:146:2 › delete movie: server error shows a readable message and keeps the input 
+
+    Error: expect(locator).not.toHaveAttribute(expected) failed
+
+    Locator: getByRole('dialog').getByRole('button', { name: /Delete/ })
+    Expected: not "true"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toHaveAttribute" getByRole('dialog').getByRole('button', { name: /Delete/ }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('button', { name: /Delete/ })
+
+
+      153 | 		await expect(page.getByRole('alert').filter({ hasText: READABLE }).first()).toBeVisible();
+      154 | 		if (c.kept) await expect(c.kept(page)).toHaveValue(c.keptValue!);
+    > 155 | 		await expect(c.button(page)).not.toHaveAttribute('aria-busy', 'true');
+          | 		                                 ^
+      156 | 		await expect(page.locator('body')).not.toContainText(/boom|Exception|stack/i);
+      157 | 	});
+      158 | }
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/feedback.e2e.ts:155:36
+
+    Error Context: test-results/feedback.e2e.ts-delete-mov-50972-message-and-keeps-the-input-stack/error-context.md
+
+  7) [stack] › e2e/stack/feedback.e2e.ts:128:2 › delete person: slow response shows pending and blocks a second submit 
+
+    Error: expect(locator).not.toHaveAttribute(expected) failed
+
+    Locator: getByRole('dialog').getByRole('button', { name: /Delete/ })
+    Expected: not "true"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toHaveAttribute" getByRole('dialog').getByRole('button', { name: /Delete/ }) with timeout 15000ms
+      - waiting for getByRole('dialog').getByRole('button', { name: /Delete/ })
+        3 × locator resolved to <button type="button" aria-busy="true" aria-disabled="true" class="btn danger svelte-18sv61c">…</button>
+          - unexpected value "true"
+
+
+      140 | 		await button.click({ force: true });
+      141 | 		fault.release();
+    > 142 | 		await expect(button).not.toHaveAttribute('aria-busy', 'true', { timeout: 15_000 });
+          | 		                         ^
+      143 | 		expect(fault.hits(), 'exactly one request reached the server').toBe(1);
+      144 | 	});
+      145 |
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/feedback.e2e.ts:142:28
+
+    Error Context: test-results/feedback.e2e.ts-delete-per-4592c--and-blocks-a-second-submit-stack/error-context.md
+
+  8) [stack] › e2e/stack/feedback.e2e.ts:146:2 › delete person: server error shows a readable message and keeps the input 
+
+    Error: expect(locator).not.toHaveAttribute(expected) failed
+
+    Locator: getByRole('dialog').getByRole('button', { name: /Delete/ })
+    Expected: not "true"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "not toHaveAttribute" getByRole('dialog').getByRole('button', { name: /Delete/ }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('button', { name: /Delete/ })
+
+
+      153 | 		await expect(page.getByRole('alert').filter({ hasText: READABLE }).first()).toBeVisible();
+      154 | 		if (c.kept) await expect(c.kept(page)).toHaveValue(c.keptValue!);
+    > 155 | 		await expect(c.button(page)).not.toHaveAttribute('aria-busy', 'true');
+          | 		                                 ^
+      156 | 		await expect(page.locator('body')).not.toContainText(/boom|Exception|stack/i);
+      157 | 	});
+      158 | }
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/feedback.e2e.ts:155:36
+
+    Error Context: test-results/feedback.e2e.ts-delete-per-4151d-message-and-keeps-the-input-stack/error-context.md
+
+  9) [stack] › e2e/stack/feedback.e2e.ts:160:1 › add credit: error keeps the chosen person and role; slow shows pending 
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('Person') resolved to 2 elements:
+        1) <form class="add svelte-1w3zx79" aria-label="Find a person">…</form> aka getByRole('form', { name: 'Find a person' })
+        2) <input id="c2" class="svelte-119851"/> aka getByRole('textbox', { name: 'Find a person by name' })
+
+    Call log:
+      - waiting for getByLabel('Person')
+
+
+      170 | 		await page.getByLabel('Find a person by name').fill(person);
+      171 | 		await page.getByRole('button', { name: 'Search people' }).click();
+    > 172 | 		await page.getByLabel('Person').selectOption({ label: person });
+          | 		                                ^
+      173 | 		await page.getByLabel('Role').selectOption('DIRECTOR');
+      174 | 		const fault = await inject(page, 'AddCredit', mode);
+      175 | 		await page.getByRole('button', { name: 'Add to movie' }).click();
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/feedback.e2e.ts:172:35
+
+    Error Context: test-results/feedback.e2e.ts-add-credit-1d994-and-role-slow-shows-pending-stack/error-context.md
+
+  10) [stack] › e2e/stack/journeys.e2e.ts:14:1 › UJ-01/02: create a movie, add a credit, upload artwork with visible progress 
+
+    Error: locator.selectOption: Error: strict mode violation: getByLabel('Person') resolved to 2 elements:
+        1) <form class="add svelte-1w3zx79" aria-label="Find a person">…</form> aka getByRole('form', { name: 'Find a person' })
+        2) <input id="c6" class="svelte-119851"/> aka getByRole('textbox', { name: 'Find a person by name' })
+
+    Call log:
+      - waiting for getByLabel('Person')
+
+
+      35 | 	await page.getByLabel('Find a person by name').fill(person);
+      36 | 	await page.getByRole('button', { name: 'Search people' }).click();
+    > 37 | 	await page.getByLabel('Person').selectOption({ label: person });
+         | 	                                ^
+      38 | 	await page.getByLabel('Role').selectOption('ACTOR');
+      39 | 	await page.getByLabel('Character (optional)').fill('Lead');
+      40 | 	await page.getByRole('button', { name: 'Add to movie' }).click();
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/stack/journeys.e2e.ts:37:34
+
+    Error Context: test-results/journeys.e2e.ts-UJ-01-02-c-8b66c-twork-with-visible-progress-stack/error-context.md
+
+  10 failed
+    [stack] › e2e/stack/feedback.e2e.ts:128:2 › create movie: slow response shows pending and blocks a second submit 
+    [stack] › e2e/stack/feedback.e2e.ts:128:2 › create person: slow response shows pending and blocks a second submit 
+    [stack] › e2e/stack/feedback.e2e.ts:128:2 › update movie: slow response shows pending and blocks a second submit 
+    [stack] › e2e/stack/feedback.e2e.ts:128:2 › update person: slow response shows pending and blocks a second submit 
+    [stack] › e2e/stack/feedback.e2e.ts:128:2 › delete movie: slow response shows pending and blocks a second submit 
+    [stack] › e2e/stack/feedback.e2e.ts:146:2 › delete movie: server error shows a readable message and keeps the input 
+    [stack] › e2e/stack/feedback.e2e.ts:128:2 › delete person: slow response shows pending and blocks a second submit 
+    [stack] › e2e/stack/feedback.e2e.ts:146:2 › delete person: server error shows a readable message and keeps the input 
+    [stack] › e2e/stack/feedback.e2e.ts:160:1 › add credit: error keeps the chosen person and role; slow shows pending 
+    [stack] › e2e/stack/journeys.e2e.ts:14:1 › UJ-01/02: create a movie, add a credit, upload artwork with visible progress 
+  11 passed (1.9m)
+scripts/e2e.sh: line 12: 16413 Terminated: 15          pnpm preview --port 4173 > /dev/null 2>&1
+make: *** [e2e] Error 1

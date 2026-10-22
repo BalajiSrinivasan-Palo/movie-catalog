@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Installed by scripts/install-hooks.sh. Runs the same script as CI (S-002 AC2, AC6).
+cd "$(git rev-parse --show-toplevel)" || exit 1
+exec ./scripts/verify.sh

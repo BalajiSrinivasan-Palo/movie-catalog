@@ -1,0 +1,148 @@
+? Verifying lockfile against supply-chain policies (327 entries)...
+✗ Lockfile failed supply-chain policy check (327 entries in 813ms)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 19 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-
+      21T13:00:19.768Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-
+      21T13:06:13.914Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-
+      21T12:59:22.386Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-
+      21T13:01:06.575Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-
+      21T13:01:42.301Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-
+      21T13:00:09.322Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-
+      21T12:59:38.024Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-
+      21T12:59:52.371Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-
+      21T13:01:04.242Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-
+      21T13:05:45.436Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-
+      21T13:02:05.003Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-
+      21T13:06:47.340Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-
+      21T13:00:55.814Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:15.215Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:16.798Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z,
+      within the minimumReleaseAge cutoff (2026-10-21T03:55:38.781Z)
+        electron-to-chromium@1.5.463 was published at 2026-10-
+      21T06:02:39.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:38.781Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:55:38.781Z)
+        vite@8.3.5 was published at 2026-10-21T06:35:40.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:55:38.781Z)
+  help: The lockfile contains entries that the active policies reject. This
+        can mean the lockfile is stale, or that someone committed a lockfile
+        that bypassed the policy locally — inspect recent changes to pnpm-
+        lock.yaml before trusting it. If the changes look expected, run "pnpm
+        clean --lockfile" and then "pnpm install" to rebuild from a fresh
+        resolution. If the fresh resolution still fails and you trust the
+        affected packages, relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+$ svelte-kit sync && svelte-check --tsconfig ./tsconfig.json
+1792641343145 START "/Users/balajisrinivasan/Documents/projects/movie-catalog/frontend"
+1792641343148 COMPLETED 545 FILES 0 ERRORS 0 WARNINGS 0 FILES_WITH_PROBLEMS
+exit=0
+? Verifying lockfile against supply-chain policies (327 entries)...
+✗ Lockfile failed supply-chain policy check (327 entries in 767ms)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 19 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-
+      21T13:00:19.768Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-
+      21T13:06:13.914Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-
+      21T12:59:22.386Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-
+      21T13:01:06.575Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-
+      21T13:01:42.301Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-
+      21T13:00:09.322Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-
+      21T12:59:38.024Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-
+      21T12:59:52.371Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-
+      21T13:01:04.242Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-
+      21T13:05:45.436Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-
+      21T13:02:05.003Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-
+      21T13:06:47.340Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-
+      21T13:00:55.814Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:15.215Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:16.798Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z,
+      within the minimumReleaseAge cutoff (2026-10-21T03:55:43.223Z)
+        electron-to-chromium@1.5.463 was published at 2026-10-
+      21T06:02:39.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:55:43.223Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:55:43.223Z)
+        vite@8.3.5 was published at 2026-10-21T06:35:40.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:55:43.223Z)
+  help: The lockfile contains entries that the active policies reject. This
+        can mean the lockfile is stale, or that someone committed a lockfile
+        that bypassed the policy locally — inspect recent changes to pnpm-
+        lock.yaml before trusting it. If the changes look expected, run "pnpm
+        clean --lockfile" and then "pnpm install" to rebuild from a fresh
+        resolution. If the fresh resolution still fails and you trust the
+        affected packages, relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+$ prettier --check . && eslint .
+Checking formatting...
+All matched files use Prettier code style!
+exit=0

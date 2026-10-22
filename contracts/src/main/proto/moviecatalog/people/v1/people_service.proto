@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package moviecatalog.people.v1;
+
+import "google/protobuf/timestamp.proto";
+import "moviecatalog/common/v1/common.proto";
+
+option java_multiple_files = true;
+option java_package = "com.moviecatalog.contracts.people.v1";
+
+// Owns people (cast and creators). Does not know about movies, except that
+// DeletePerson asks movie-service whether credits exist (D8, ADR-003).
+// Update uses full-replacement semantics (PUT).
+service PeopleService {
+  // Errors: INVALID_ARGUMENT.
+  rpc CreatePerson(CreatePersonRequest) returns (Person);
+  // Errors: NOT_FOUND.
+  rpc GetPerson(GetPersonRequest) returns (Person);
+  // Errors: NOT_FOUND, INVALID_ARGUMENT.
+  rpc UpdatePerson(UpdatePersonRequest) returns (Person);
+  // Errors: NOT_FOUND;
+  //         FAILED_PRECONDITION with ErrorDetail.code = "person.has_credits"
+  //           and blocking_movies populated (BR-05);
+  //         UNAVAILABLE when credits cannot be verified (fail closed, EC-16).
+  rpc DeletePerson(DeletePersonRequest) returns (DeletePersonResponse);
+  // Errors: INVALID_ARGUMENT (paging).
+  rpc ListPeople(ListPeopleRequest) returns (ListPeopleResponse);
+  // Case-insensitive substring match on name and bio (D9).
+  // Errors: INVALID_ARGUMENT (search.query.invalid).
+  rpc SearchPeople(SearchPeopleRequest) returns (ListPeopleResponse);
+  // Resolves up to 200 ids in one call (NFR-PERF-04). Unknown ids are simply
+  // absent from the response (BR-07); the call does not fail for them.
+  // More than 200 ids fails with INVALID_ARGUMENT; an empty list returns an empty response. Sorting of
+  // the result is unspecified; callers index by id.
+  rpc BatchGetPeople(BatchGetPeopleRequest) returns (BatchGetPeopleResponse);
+}
+
+message Person {
+  string id = 1;
+  string name = 2;
+  optional moviecatalog.common.v1.Date birth_date = 3;
+  string bio = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message PersonInput {
+  string name = 1;
+  optional moviecatalog.common.v1.Date birth_date = 2;
+  string bio = 3;
+}
+
+message CreatePersonRequest { PersonInput input = 1; }
+message GetPersonRequest { string id = 1; }
+message UpdatePersonRequest {
+  string id = 1;
+  PersonInput input = 2;
+}
+message DeletePersonRequest { string id = 1; }
+message DeletePersonResponse { string id = 1; }
+
+enum PersonSortField {
+  PERSON_SORT_FIELD_UNSPECIFIED = 0; // server default: name
+  PERSON_SORT_FIELD_NAME = 1;
+}
+
+message ListPeopleRequest {
+  moviecatalog.common.v1.PageRequest page = 1;
+  PersonSortField sort_field = 2;
+  moviecatalog.common.v1.SortDirection sort_direction = 3;
+  // Optional name filter: case-insensitive substring, wildcards literal, 1..100 chars.
+  optional string query = 4;
+}
+
+message ListPeopleResponse {
+  repeated Person people = 1;
+  moviecatalog.common.v1.PageInfo page_info = 2;
+}
+
+message SearchPeopleRequest {
+  string query = 1;
+  moviecatalog.common.v1.PageRequest page = 2;
+}
+
+message BatchGetPeopleRequest { repeated string ids = 1; }
+message BatchGetPeopleResponse { repeated Person people = 1; }

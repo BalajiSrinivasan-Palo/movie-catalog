@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/001-movie.yaml
+  - include:
+      file: db/changelog/002-credit.yaml
+  - include:
+      file: db/changelog/003-artwork.yaml

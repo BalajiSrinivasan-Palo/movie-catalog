@@ -1,0 +1,41 @@
+# Starts from detekt's defaults and relaxes only what does not fit this codebase. Every override says why.
+build:
+  maxIssues: 0
+
+style:
+  MagicNumber:
+    active: false          # limits such as 5 MiB and 64 KiB are named where they matter and explained in comments
+  ReturnCount:
+    active: false          # early returns are used on purpose for validation and error paths
+  ThrowsCount:
+    active: false
+  WildcardImport:
+    active: true
+    excludeImports: ['java.util.*']
+  MaxLineLength:
+    maxLineLength: 160
+  UnusedPrivateMember:
+    active: true
+
+complexity:
+  LongMethod:
+    threshold: 80
+  LongParameterList:
+    constructorThreshold: 12  # Spring constructors list their collaborators
+    functionThreshold: 8
+  TooManyFunctions:
+    active: false          # gRPC services and controllers have one function per operation
+  CyclomaticComplexMethod:
+    threshold: 20          # the JSON reader and the multipart rewrite are linear but branchy
+  NestedBlockDepth:
+    threshold: 5
+
+exceptions:
+  TooGenericExceptionCaught:
+    active: false          # boundaries (gRPC handlers, upload cleanup) must catch everything to clean up
+  SwallowedException:
+    active: false          # errors are mapped to keyed responses, and logged where they are unexpected
+
+naming:
+  FunctionNaming:
+    ignoreAnnotated: ['Test']   # tests use sentence-style backticked names

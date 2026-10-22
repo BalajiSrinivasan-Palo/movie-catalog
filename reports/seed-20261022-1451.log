@@ -1,0 +1,13 @@
+✔ the catalog has ten real films; every credit points at a listed person and no person is unused (1.356625ms)
+✔ a smaller catalog keeps only the people its films credit (0.105083ms)
+✔ every film has a JPEG poster under the upload limit, credited in posters/CREDITS.md (48.338583ms)
+✔ a first run creates everything and a second run creates nothing (221.67025ms)
+✔ a movie that exists without artwork gets its poster on the next run (57.638208ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 466.354791

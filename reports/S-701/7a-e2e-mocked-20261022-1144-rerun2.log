@@ -1,0 +1,157 @@
+? Verifying lockfile against supply-chain policies (327 entries)...
+✗ Lockfile failed supply-chain policy check (327 entries in 901ms)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 19 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-
+      21T13:00:19.768Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-
+      21T13:06:13.914Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-
+      21T12:59:22.386Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-
+      21T13:01:06.575Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-
+      21T13:01:42.301Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-
+      21T13:00:09.322Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-
+      21T12:59:38.024Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-
+      21T12:59:52.371Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-
+      21T13:01:04.242Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-
+      21T13:05:45.436Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-
+      21T13:02:05.003Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-
+      21T13:06:47.340Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-
+      21T13:00:55.814Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:15.215Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:16.798Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z,
+      within the minimumReleaseAge cutoff (2026-10-21T03:44:49.550Z)
+        electron-to-chromium@1.5.463 was published at 2026-10-
+      21T06:02:39.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:44:49.550Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:44:49.550Z)
+        vite@8.3.5 was published at 2026-10-21T06:35:40.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:44:49.550Z)
+  help: The lockfile contains entries that the active policies reject. This
+        can mean the lockfile is stale, or that someone committed a lockfile
+        that bypassed the policy locally — inspect recent changes to pnpm-
+        lock.yaml before trusting it. If the changes look expected, run "pnpm
+        clean --lockfile" and then "pnpm install" to rebuild from a fresh
+        resolution. If the fresh resolution still fails and you trust the
+        affected packages, relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+[WebServer] $ vite build
+[WebServer] $ vite preview --port 4173
+
+Running 57 tests using 4 workers
+
+  ✓   3 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /movies/m2 (1.4s)
+  ✓   2 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /movies/m1 (1.5s)
+  ✓   1 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /movies/new (1.5s)
+  ✓   4 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /movies (1.5s)
+  ✓   7 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /people/new (1.0s)
+  ✓   5 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /movies/m1/edit (1.1s)
+  ✓   8 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /people/p1 (1.0s)
+  ✓   6 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /people (1.1s)
+  ✓  10 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /search?q=the (1.1s)
+  ✓   9 [mocked] › e2e/mocked/a11y.e2e.ts:53:2 › page load /people/p1/edit (1.1s)
+  ✓  11 [mocked] › e2e/mocked/a11y.e2e.ts:59:1 › movie list: empty state (1.2s)
+  ✓  12 [mocked] › e2e/mocked/a11y.e2e.ts:65:1 › movie list: error state (1.2s)
+  ✓  14 [mocked] › e2e/mocked/a11y.e2e.ts:78:1 › movie detail: delete confirmation dialog open (1.1s)
+  ✓  16 [mocked] › e2e/mocked/a11y.e2e.ts:92:1 › movie detail: not found (987ms)
+  ✓  15 [mocked] › e2e/mocked/a11y.e2e.ts:85:1 › movie detail: remove artwork dialog open (1.0s)
+  ✓  17 [mocked] › e2e/mocked/a11y.e2e.ts:97:1 › movie form: validation errors (1.1s)
+  ✓  19 [mocked] › e2e/mocked/a11y.e2e.ts:110:1 › uploader: error message for a file that is not an image (991ms)
+  ✓  18 [mocked] › e2e/mocked/a11y.e2e.ts:104:1 › person form: validation errors (1.1s)
+  ✓  20 [mocked] › e2e/mocked/a11y.e2e.ts:119:1 › credits: add form open and the person picker (1.1s)
+  ✓  21 [mocked] › e2e/mocked/a11y.e2e.ts:128:1 › person: delete blocked by credits shows the explanation (1.1s)
+  ✓  22 [mocked] › e2e/mocked/a11y.e2e.ts:136:1 › search: too short, no results, error (1.3s)
+  ✓  24 [mocked] › e2e/mocked/a11y.e2e.ts:151:1 › keyboard: skip link, search box and navigation are reachable in order (666ms)
+  ✓  25 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies at 360px: no horizontal scroll and touch targets of 44px (642ms)
+  ✓  23 [mocked] › e2e/mocked/a11y.e2e.ts:145:1 › search: backend error (969ms)
+  ✓  26 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/new at 360px: no horizontal scroll and touch targets of 44px (641ms)
+  ✓  27 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m1 at 360px: no horizontal scroll and touch targets of 44px (661ms)
+  ✓  28 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m2 at 360px: no horizontal scroll and touch targets of 44px (641ms)
+  ✓  29 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m3 at 360px: no horizontal scroll and touch targets of 44px (632ms)
+  ✓  30 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m1/edit at 360px: no horizontal scroll and touch targets of 44px (620ms)
+  ✓  31 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people at 360px: no horizontal scroll and touch targets of 44px (646ms)
+  ✓  32 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people/new at 360px: no horizontal scroll and touch targets of 44px (656ms)
+  ✓  33 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people/p1 at 360px: no horizontal scroll and touch targets of 44px (617ms)
+  ✓  34 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people/p1/edit at 360px: no horizontal scroll and touch targets of 44px (625ms)
+  ✓  35 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /search?q=the at 360px: no horizontal scroll and touch targets of 44px (624ms)
+  ✓  36 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies at 768px: no horizontal scroll and touch targets of 44px (625ms)
+  ✓  37 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/new at 768px: no horizontal scroll and touch targets of 44px (630ms)
+  ✓  38 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m1 at 768px: no horizontal scroll and touch targets of 44px (641ms)
+  ✓  39 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m2 at 768px: no horizontal scroll and touch targets of 44px (616ms)
+  ✓  40 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m3 at 768px: no horizontal scroll and touch targets of 44px (619ms)
+  ✓  41 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m1/edit at 768px: no horizontal scroll and touch targets of 44px (635ms)
+  ✓  42 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people at 768px: no horizontal scroll and touch targets of 44px (620ms)
+  ✓  43 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people/new at 768px: no horizontal scroll and touch targets of 44px (620ms)
+  ✓  44 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people/p1 at 768px: no horizontal scroll and touch targets of 44px (634ms)
+  ✓  45 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people/p1/edit at 768px: no horizontal scroll and touch targets of 44px (621ms)
+  ✓  46 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /search?q=the at 768px: no horizontal scroll and touch targets of 44px (619ms)
+  ✓  47 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies at 1280px: no horizontal scroll and touch targets of 44px (654ms)
+  ✓  48 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/new at 1280px: no horizontal scroll and touch targets of 44px (621ms)
+  ✓  49 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m1 at 1280px: no horizontal scroll and touch targets of 44px (628ms)
+  ✓  50 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m2 at 1280px: no horizontal scroll and touch targets of 44px (632ms)
+  ✓  51 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m3 at 1280px: no horizontal scroll and touch targets of 44px (635ms)
+  ✓  52 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /movies/m1/edit at 1280px: no horizontal scroll and touch targets of 44px (635ms)
+  ✓  53 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people at 1280px: no horizontal scroll and touch targets of 44px (624ms)
+  ✓  54 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people/new at 1280px: no horizontal scroll and touch targets of 44px (651ms)
+  ✓  55 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people/p1 at 1280px: no horizontal scroll and touch targets of 44px (627ms)
+  ✓  56 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /people/p1/edit at 1280px: no horizontal scroll and touch targets of 44px (657ms)
+  ✓  57 [mocked] › e2e/mocked/responsive.e2e.ts:28:3 › /search?q=the at 1280px: no horizontal scroll and touch targets of 44px (625ms)
+  ✘  13 [mocked] › e2e/mocked/a11y.e2e.ts:71:1 › movie list: filtered with no matches (30.0s)
+
+
+  1) [mocked] › e2e/mocked/a11y.e2e.ts:71:1 › movie list: filtered with no matches ─────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('label').filter({ hasText: /^War$/ })
+
+
+      71 | test('movie list: filtered with no matches', async ({ page }) => {
+      72 | 	await open(page, '/movies');
+    > 73 | 	await page.locator('label', { hasText: /^War$/ }).click(); // S-701: clicking a genre chip applies it at once
+         | 	                                                  ^
+      74 | 	await expect(page.getByText('No movies match these filters.')).toBeVisible();
+      75 | 	await scan(page, 'no filter matches');
+      76 | });
+        at /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/e2e/mocked/a11y.e2e.ts:73:52
+
+    Error Context: test-results/a11y.e2e.ts-movie-list-filtered-with-no-matches-mocked/error-context.md
+
+  1 failed
+    [mocked] › e2e/mocked/a11y.e2e.ts:71:1 › movie list: filtered with no matches ──────────────────
+  56 passed (39.7s)

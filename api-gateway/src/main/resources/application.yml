@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    default: dev
+  servlet:
+    multipart:
+      # The container spools each part to a temp file, so memory use does not grow with the file.
+      # Parsing is lazy so the upload handler can turn a size failure into a GraphQL-shaped error.
+      # movie-service enforces the exact 5 MiB limit; these only stop oversized requests early.
+      resolve-lazily: true
+      max-file-size: 6MB
+      max-request-size: 7MB
+  graphql:
+    path: /graphql
+    schema:
+      locations: classpath:graphql/
+      introspection:
+        enabled: false # enabled by application-dev.yml only (S-004 AC5)
+
+server:
+  port: ${GATEWAY_PORT:8080}
+
+catalog:
+  frontend-origin: ${FRONTEND_ORIGIN:http://localhost:5173}
+
+downstream:
+  movie:
+    target: ${MOVIE_SERVICE_TARGET:127.0.0.1:${MOVIE_SERVICE_GRPC_PORT:9091}}
+  people:
+    target: ${PEOPLE_SERVICE_TARGET:127.0.0.1:${PEOPLE_SERVICE_GRPC_PORT:9092}}
+  max-inbound-message-bytes: 1048576
+  deadline-ms:
+    default: 3000
+    upload: 30000
+    health: 2000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  pattern:
+    level: "%5p [%X{correlationId:-}]"

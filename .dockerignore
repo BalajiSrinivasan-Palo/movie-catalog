@@ -1,0 +1,10 @@
+.git
+data
+reports
+**/build
+**/.gradle
+**/node_modules
+**/.svelte-kit
+**/coverage
+**/test-results
+.idea

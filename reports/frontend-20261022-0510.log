@@ -1,0 +1,110 @@
+===== pnpm check =====
+[WARN] The following settings in pnpm-workspace.yaml are not recognized by this version of pnpm and were ignored: "name", "private" (did you mean "provenance"?), "type" (did you mean "initType"?), "scripts" (did you mean "scriptShell"?), "devDependencies" (did you mean "patchedDependencies"?), "imports" (did you mean "reporter"?).
+$ svelte-kit sync && svelte-check --tsconfig ./tsconfig.json
+failed to load config from /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/vite.config.ts
+[1m[31m> Build failed with 1 error:
+
+[31m[PARSE_ERROR] [0mExpected a semicolon or an implicit semicolon after a statement, but found none
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vite.config.ts:2:8 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m"[0m[38;5;249mn[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249m"[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249md[0m[38;5;249m"[0m[38;5;249m,[0m
+ [38;5;240m  │[0m           │ 
+ [38;5;240m  │[0m           ╰─ 
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: Try inserting a semicolon here
+[38;5;246m───╯[0m
+[39m[22m
+
+[31m[PARSE_ERROR] [0mExpected a semicolon or an implicit semicolon after a statement, but found none
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vite.config.ts:2:8 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m"[0m[38;5;249mn[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249m"[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249md[0m[38;5;249m"[0m[38;5;249m,[0m
+ [38;5;240m  │[0m           │ 
+ [38;5;240m  │[0m           ╰─ 
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: Try inserting a semicolon here
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/rolldown@1.2.14/node_modules/rolldown/dist/shared/error-CBG33oNV.mjs:49:18)
+    at unwrapBindingResult (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/rolldown@1.2.14/node_modules/rolldown/dist/shared/error-CBG33oNV.mjs:19:128)
+    at #build (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/rolldown@1.2.14/node_modules/rolldown/dist/shared/rolldown-BYX6bV3R.mjs:146:34)
+    at async bundleConfigFile (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:38081:12)
+    at async bundleAndLoadConfigFile (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:37977:18)
+    at async loadConfigFromFile (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:37938:42)
+    at async Module.resolveConfig (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:37540:22)
+    at async file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/@sveltejs+kit@3.1.0_@sveltejs+vite-plugin-svelte@7.3.1_svelte@5.57.2_@typescript-eslint_e126ef67f9d1d7c6d09b94a517ac2817/node_modules/@sveltejs/kit/src/cli.js:102:23
+[ELIFECYCLE] Command failed with exit code 1.
+===== pnpm check exit=1 =====
+===== pnpm lint =====
+[WARN] The following settings in pnpm-workspace.yaml are not recognized by this version of pnpm and were ignored: "name", "private" (did you mean "provenance"?), "type" (did you mean "initType"?), "scripts" (did you mean "scriptShell"?), "devDependencies" (did you mean "patchedDependencies"?), "imports" (did you mean "reporter"?).
+$ prettier --check . && eslint .
+Checking formatting...
+[error] Invalid configuration for file "/Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/.gitignore":
+[error] Unexpected token ':'
+[ELIFECYCLE] Command failed with exit code 2.
+===== pnpm lint exit=2 =====
+===== pnpm test =====
+[WARN] The following settings in pnpm-workspace.yaml are not recognized by this version of pnpm and were ignored: "name", "private" (did you mean "provenance"?), "type" (did you mean "initType"?), "scripts" (did you mean "scriptShell"?), "devDependencies" (did you mean "patchedDependencies"?), "imports" (did you mean "reporter"?).
+$ vitest --run
+failed to load config from /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/vite.config.ts
+
+⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯
+Error: Build failed with 1 error:
+
+[31m[PARSE_ERROR] [0mExpected a semicolon or an implicit semicolon after a statement, but found none
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vite.config.ts:2:8 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m"[0m[38;5;249mn[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249m"[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249md[0m[38;5;249m"[0m[38;5;249m,[0m
+ [38;5;240m  │[0m           │ 
+ [38;5;240m  │[0m           ╰─ 
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: Try inserting a semicolon here
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/rolldown@1.2.14/node_modules/rolldown/dist/shared/error-CBG33oNV.mjs:49:18)
+    at unwrapBindingResult (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/rolldown@1.2.14/node_modules/rolldown/dist/shared/error-CBG33oNV.mjs:19:128)
+    at #build (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/rolldown@1.2.14/node_modules/rolldown/dist/shared/rolldown-BYX6bV3R.mjs:146:34)
+    at async bundleConfigFile (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:38081:12)
+    at async bundleAndLoadConfigFile (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:37977:18)
+    at async loadConfigFromFile (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:37938:42)
+    at async resolveConfig (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:37540:22)
+    at async _createServer (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:24830:65)
+    at async createViteServer (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vitest@4.1.12_@types+node@22.20.5_@vitest+coverage-v8@4.1.12_jsdom@29.1.1_vite@8.3.4_@types+node@22.20.5_/node_modules/vitest/dist/chunks/cli-api.B0Pz1_R7.js:8902:17)
+    at async createVitest (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vitest@4.1.12_@types+node@22.20.5_@vitest+coverage-v8@4.1.12_jsdom@29.1.1_vite@8.3.4_@types+node@22.20.5_/node_modules/vitest/dist/chunks/cli-api.B0Pz1_R7.js:14288:18) {
+  errors: [Getter/Setter]
+}
+
+
+
+[ELIFECYCLE] Test failed. See above for more details.
+===== pnpm test exit=1 =====
+===== pnpm build =====
+[WARN] The following settings in pnpm-workspace.yaml are not recognized by this version of pnpm and were ignored: "name", "private" (did you mean "provenance"?), "type" (did you mean "initType"?), "scripts" (did you mean "scriptShell"?), "devDependencies" (did you mean "patchedDependencies"?), "imports" (did you mean "reporter"?).
+$ vite build
+failed to load config from /Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/vite.config.ts
+error during build:
+Error: Build failed with 1 error:
+
+[31m[PARSE_ERROR] [0mExpected a semicolon or an implicit semicolon after a statement, but found none
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vite.config.ts:2:8 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m [38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m [0m[38;5;249m"[0m[38;5;249mn[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249m"[0m[38;5;249m:[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249md[0m[38;5;249m"[0m[38;5;249m,[0m
+ [38;5;240m  │[0m           │ 
+ [38;5;240m  │[0m           ╰─ 
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: Try inserting a semicolon here
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/rolldown@1.2.14/node_modules/rolldown/dist/shared/error-CBG33oNV.mjs:49:18)
+    at unwrapBindingResult (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/rolldown@1.2.14/node_modules/rolldown/dist/shared/error-CBG33oNV.mjs:19:128)
+    at #build (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/rolldown@1.2.14/node_modules/rolldown/dist/shared/rolldown-BYX6bV3R.mjs:146:34)
+    at async bundleConfigFile (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:38081:12)
+    at async bundleAndLoadConfigFile (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:37977:18)
+    at async loadConfigFromFile (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:37938:42)
+    at async resolveConfig (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:37540:22)
+    at async createBuilder (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/chunks/node.js:35112:17)
+    at async CAC.<anonymous> (file:///Users/balajisrinivasan/Documents/projects/movie-catalog/frontend/node_modules/.pnpm/vite@8.3.4_@types+node@22.20.5/node_modules/vite/dist/node/cli.js:769:19) {
+  errors: [Getter/Setter]
+}
+[ELIFECYCLE] Command failed with exit code 1.
+===== pnpm build exit=1 =====

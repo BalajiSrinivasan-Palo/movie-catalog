@@ -1,0 +1,11 @@
+Summary of Gradle JUnit XML results from the owner's run at 14:14 (log: 8c-gradle-targeted-20261022-1414.log)
+== movie-service
+  pass  MovieGrpcTest: S-702 AC8 AC9 listMovies reads the genres list, combines it with genre, and rejects bad lists()
+  pass  MovieServiceTest: S-702 AC8 list with several genres matches any of them, once each, with the right total()
+  pass  MovieServiceTest: S-702 AC9 list rejects duplicate or unknown genres with a keyed field error()
+  pass  ValidatorTest: S-702 AC9 genre filter allows up to all 15 known genres without duplicates()
+  total=76 failures=0 errors=0 skipped=0
+== api-gateway
+  pass  CatalogGraphQlTest: S-702 AC9 a rejected genres list comes back as a keyed field error()
+  pass  CatalogGraphQlTest: S-702 AC8 the genres filter reaches movie-service as a list, alongside the deprecated genre()
+  total=54 failures=0 errors=0 skipped=0

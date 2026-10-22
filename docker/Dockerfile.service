@@ -1,0 +1,16 @@
+# One image recipe for all three Spring Boot services. Build with: --build-arg SERVICE=movie-service
+# NOT VERIFIED: written without a Docker daemon (see docs/assessment/decisions-log.md, D19).
+FROM gradle:9.8.2-jdk21 AS build
+ARG SERVICE
+WORKDIR /src
+COPY . .
+RUN gradle --no-daemon --console=plain ":${SERVICE}:bootJar" -x test
+
+FROM eclipse-temurin:21-jre
+ARG SERVICE
+RUN useradd --system --create-home --uid 10001 app && mkdir -p /data && chown app /data
+USER app
+WORKDIR /app
+COPY --from=build /src/${SERVICE}/build/libs/*-SNAPSHOT.jar /app/app.jar
+ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75"
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

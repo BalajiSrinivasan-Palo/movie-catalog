@@ -1,0 +1,10 @@
+# pnpm audit outputs, 2026-10-21T22:06:55Z
+# dir: /home/claude/fe-work/frontend (pnpm 10.28.0, node v22.22.0)
+
+## pnpm audit --prod
+No known vulnerabilities found
+exit=0
+
+## pnpm audit (all, incl. dev)
+No known vulnerabilities found
+exit=0

@@ -1,0 +1,82 @@
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+> Task :contracts:protobufDummy UP-TO-DATE
+> Task :contracts:extractIncludeProto UP-TO-DATE
+> Task :contracts:extractProto UP-TO-DATE
+> Task :contracts:generateProto
+> Task :contracts:compileJava
+> Task :contracts:processResources
+> Task :contracts:classes
+> Task :contracts:jar
+> Task :contracts:assemble
+> Task :contracts:extractIncludeTestProto UP-TO-DATE
+> Task :contracts:extractTestProto UP-TO-DATE
+> Task :contracts:generateTestProto NO-SOURCE
+> Task :contracts:compileTestJava NO-SOURCE
+> Task :contracts:processTestResources NO-SOURCE
+> Task :contracts:testClasses UP-TO-DATE
+> Task :contracts:test NO-SOURCE
+> Task :contracts:check UP-TO-DATE
+> Task :contracts:build
+> Task :movie-service:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :service-support:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :movie-service:processResources UP-TO-DATE
+> Task :movie-service:processTestResources NO-SOURCE
+> Task :service-support:processResources NO-SOURCE
+> Task :api-gateway:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :api-gateway:processResources
+> Task :api-gateway:processTestResources NO-SOURCE
+> Task :service-support:compileKotlin
+> Task :service-support:compileJava NO-SOURCE
+> Task :service-support:classes UP-TO-DATE
+> Task :service-support:jar UP-TO-DATE
+> Task :movie-service:compileKotlin
+> Task :movie-service:compileJava NO-SOURCE
+> Task :movie-service:classes UP-TO-DATE
+> Task :api-gateway:compileKotlin
+> Task :movie-service:jar
+> Task :api-gateway:compileJava NO-SOURCE
+> Task :api-gateway:classes
+> Task :api-gateway:jar
+> Task :api-gateway:compileTestKotlin
+> Task :api-gateway:compileTestJava NO-SOURCE
+> Task :api-gateway:testClasses UP-TO-DATE
+> Task :movie-service:compileTestKotlin
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-22T14:14:58.978+08:00  INFO [] 55264 --- [api-gateway] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-22T14:15:00.996+08:00  INFO [] 55264 --- [api-gateway] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-22T14:15:01.016+08:00  INFO [] 55264 --- [api-gateway] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-22T14:15:03.023+08:00  INFO [] 55264 --- [api-gateway] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-22T14:15:03.038+08:00  INFO [] 55264 --- [api-gateway] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-22T14:15:05.053+08:00  INFO [] 55264 --- [api-gateway] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+> Task :api-gateway:test
+> Task :movie-service:compileTestJava NO-SOURCE
+> Task :movie-service:testClasses UP-TO-DATE
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-22T14:15:19.728+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T14:15:19.729+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-22T14:15:19.815+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-22T14:15:19.816+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T14:15:19.817+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-10-22T14:15:19.817+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-10-22T14:15:19.818+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T14:15:19.818+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-10-22T14:15:19.819+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2026-10-22T14:15:19.819+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T14:15:19.820+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2026-10-22T14:15:19.820+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2026-10-22T14:15:19.821+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T14:15:19.821+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2026-10-22T14:15:19.821+08:00  INFO [] 55356 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+> Task :movie-service:test
+
+[Incubating] Problems report is available at: file:///Users/balajisrinivasan/Documents/projects/movie-catalog/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 52s
+20 actionable tasks: 14 executed, 6 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.2/userguide/configuration_cache_enabling.html

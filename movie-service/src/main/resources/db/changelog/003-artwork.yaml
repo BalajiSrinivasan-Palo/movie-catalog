@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-artwork
+      author: movie-catalog
+      changes:
+        - createTable:
+            tableName: artwork
+            columns:
+              - column: { name: id, type: uuid, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: movie_id, type: uuid, constraints: { nullable: false } }
+              - column: { name: content_type, type: varchar(20), constraints: { nullable: false } }
+              - column: { name: size_bytes, type: bigint, constraints: { nullable: false } }
+              - column: { name: width, type: int, constraints: { nullable: false } }
+              - column: { name: height, type: int, constraints: { nullable: false } }
+              - column: { name: original_path, type: varchar(200), constraints: { nullable: false } }
+              - column: { name: thumbnail_path, type: varchar(200), constraints: { nullable: false } }
+              - column: { name: version, type: varchar(40), constraints: { nullable: false } }
+              - column: { name: created_at, type: timestamp with time zone, constraints: { nullable: false } }
+        - addUniqueConstraint:
+            tableName: artwork
+            columnNames: movie_id
+            constraintName: uq_artwork_movie
+        - addForeignKeyConstraint:
+            baseTableName: artwork
+            baseColumnNames: movie_id
+            referencedTableName: movie
+            referencedColumnNames: id
+            onDelete: CASCADE
+            constraintName: fk_artwork_movie

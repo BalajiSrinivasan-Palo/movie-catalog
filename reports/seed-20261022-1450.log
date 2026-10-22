@@ -1,0 +1,35 @@
+node:internal/modules/cjs/loader:1413
+  throw err;
+  ^
+
+Error: Cannot find module '/Users/balajisrinivasan/Documents/projects/movie-catalog/scripts/seed'
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1410:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1061:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1066:22)
+    at Function._load (node:internal/modules/cjs/loader:1215:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:234:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:151:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v23.5.0
+✖ scripts/seed (61.551291ms)
+  'test failed'
+
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69.030459
+
+✖ failing tests:
+
+test at scripts/seed:1:1
+✖ scripts/seed (61.551291ms)
+  'test failed'

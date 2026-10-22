@@ -1,0 +1,10 @@
+data/
+build/
+.gradle/
+node_modules/
+.svelte-kit/
+coverage/
+.idea/
+.DS_Store
+reports/verify-*.log
+.kotlin/

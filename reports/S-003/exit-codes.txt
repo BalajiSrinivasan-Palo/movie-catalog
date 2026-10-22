@@ -1,0 +1,4 @@
+check exit=0
+lint exit=0
+test:coverage exit=0
+build exit=0

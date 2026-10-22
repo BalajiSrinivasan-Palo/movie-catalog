@@ -1,0 +1,10 @@
+Seeding http://localhost:8080 ...
+people: 12 created, 41 already there
+movies: 2 created, 10 already there; posters uploaded: 2, missing local posters: 0
+credits: 12 created, 56 already there
+Done. {"peopleCreated":12,"peopleSkipped":41,"moviesCreated":2,"moviesSkipped":10,"creditsCreated":12,"creditsSkipped":56,"postersUploaded":2,"postersMissing":0}
+Seeding http://localhost:8080 ...
+people: 0 created, 53 already there
+movies: 0 created, 12 already there; posters uploaded: 0, missing local posters: 0
+credits: 0 created, 68 already there
+Done. {"peopleCreated":0,"peopleSkipped":53,"moviesCreated":0,"moviesSkipped":12,"creditsCreated":0,"creditsSkipped":68,"postersUploaded":0,"postersMissing":0}

@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: movie-service
+  datasource:
+    url: jdbc:h2:file:${MOVIE_DB_PATH:./data/movie-db};AUTO_SERVER=FALSE
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: none # the schema belongs to Liquibase, never to Hibernate (NFR-REL-04); tests exercise every mapping
+    open-in-view: false
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+server:
+  port: ${MOVIE_HTTP_PORT:8081} # Actuator health only; the API is gRPC
+
+grpc:
+  server:
+    port: ${MOVIE_SERVICE_GRPC_PORT:9091}
+    bind-address: ${GRPC_BIND_ADDRESS:127.0.0.1} # loopback unless the container setup sets it
+    max-inbound-message-bytes: 1048576 # 1 MiB; artwork travels as 64 KiB chunks (NFR-SEC-06)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  pattern:
+    level: "%5p [%X{correlationId:-}]"
+
+artwork:
+  dir: ${ARTWORK_DIR:./data/artwork} # outside any static root (NFR-SEC-02)
+  max-bytes: 5242880 # 5 MiB, enforced while the upload streams in
+  max-dimension: 6000
+  thumbnail-width: 320

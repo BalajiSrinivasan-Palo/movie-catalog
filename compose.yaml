@@ -1,0 +1,54 @@
+# Optional: the whole stack in containers (S-606). Needs Docker with Compose v2.
+#   docker compose up --build        then open http://localhost:8088
+#   docker compose down              keep the data;   docker compose down -v   delete it
+# NOT VERIFIED: only `docker compose config` could be run when this was written (no Docker daemon). See D19.
+# The supported way to run the project is the one in the README that needs only JDK 21, Node and pnpm.
+name: movie-catalog
+
+x-service: &service
+  restart: unless-stopped
+  environment: &common-env
+    GRPC_BIND_ADDRESS: 0.0.0.0 # services must reach each other across the compose network
+
+services:
+  movie-service:
+    <<: *service
+    build: { context: ., dockerfile: docker/Dockerfile.service, args: { SERVICE: movie-service } }
+    environment:
+      <<: *common-env
+      MOVIE_DB_PATH: /data/movie-db
+      ARTWORK_DIR: /data/artwork
+    volumes: [movie-data:/data]
+    expose: ["9091", "8081"]
+
+  people-service:
+    <<: *service
+    build: { context: ., dockerfile: docker/Dockerfile.service, args: { SERVICE: people-service } }
+    environment:
+      <<: *common-env
+      PEOPLE_DB_PATH: /data/people-db
+      MOVIE_SERVICE_TARGET: movie-service:9091
+    volumes: [people-data:/data]
+    depends_on: [movie-service]
+    expose: ["9092", "8082"]
+
+  api-gateway:
+    restart: unless-stopped
+    build: { context: ., dockerfile: docker/Dockerfile.service, args: { SERVICE: api-gateway } }
+    environment:
+      MOVIE_SERVICE_TARGET: movie-service:9091
+      PEOPLE_SERVICE_TARGET: people-service:9092
+      FRONTEND_ORIGIN: http://localhost:8088
+      SPRING_PROFILES_ACTIVE: prod # no GraphQL introspection
+    depends_on: [movie-service, people-service]
+    expose: ["8080"]
+
+  frontend:
+    restart: unless-stopped
+    build: { context: ., dockerfile: docker/Dockerfile.frontend }
+    ports: ["8088:80"]
+    depends_on: [api-gateway]
+
+volumes:
+  movie-data:
+  people-data:

@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-credit
+      author: movie-catalog
+      changes:
+        - createTable:
+            tableName: credit
+            columns:
+              - column: { name: id, type: uuid, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: movie_id, type: uuid, constraints: { nullable: false } }
+              - column: { name: person_id, type: uuid, constraints: { nullable: false } }
+              - column: { name: role, type: varchar(20), constraints: { nullable: false } }
+              - column: { name: character_name, type: varchar(200) }
+              - column: { name: created_at, type: timestamp with time zone, constraints: { nullable: false } }
+        - addForeignKeyConstraint:
+            baseTableName: credit
+            baseColumnNames: movie_id
+            referencedTableName: movie
+            referencedColumnNames: id
+            onDelete: CASCADE
+            constraintName: fk_credit_movie
+        - addUniqueConstraint:
+            tableName: credit
+            columnNames: movie_id, person_id, role
+            constraintName: uq_credit_movie_person_role
+        - createIndex:
+            tableName: credit
+            indexName: idx_credit_person
+            columns:
+              - column: { name: person_id }
+        - sql:
+            sql: ALTER TABLE credit ADD CONSTRAINT ck_credit_character CHECK (character_name IS NULL OR role = 'ACTOR')

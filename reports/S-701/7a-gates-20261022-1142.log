@@ -1,0 +1,367 @@
+## pnpm check
+? Verifying lockfile against supply-chain policies (327 entries)...
+✗ Lockfile failed supply-chain policy check (327 entries in 1.1s)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 19 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-
+      21T13:00:19.768Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-
+      21T13:06:13.914Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-
+      21T12:59:22.386Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-
+      21T13:01:06.575Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-
+      21T13:01:42.301Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-
+      21T13:00:09.322Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-
+      21T12:59:38.024Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-
+      21T12:59:52.371Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-
+      21T13:01:04.242Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-
+      21T13:05:45.436Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-
+      21T13:02:05.003Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-
+      21T13:06:47.340Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-
+      21T13:00:55.814Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:15.215Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:16.798Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z,
+      within the minimumReleaseAge cutoff (2026-10-21T03:42:41.473Z)
+        electron-to-chromium@1.5.463 was published at 2026-10-
+      21T06:02:39.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:41.473Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:42:41.473Z)
+        vite@8.3.5 was published at 2026-10-21T06:35:40.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:42:41.473Z)
+  help: The lockfile contains entries that the active policies reject. This
+        can mean the lockfile is stale, or that someone committed a lockfile
+        that bypassed the policy locally — inspect recent changes to pnpm-
+        lock.yaml before trusting it. If the changes look expected, run "pnpm
+        clean --lockfile" and then "pnpm install" to rebuild from a fresh
+        resolution. If the fresh resolution still fails and you trust the
+        affected packages, relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+$ svelte-kit sync && svelte-check --tsconfig ./tsconfig.json
+1792640566640 START "/Users/balajisrinivasan/Documents/projects/movie-catalog/frontend"
+1792640566642 COMPLETED 544 FILES 0 ERRORS 0 WARNINGS 0 FILES_WITH_PROBLEMS
+exit=0
+## pnpm lint
+? Verifying lockfile against supply-chain policies (327 entries)...
+✗ Lockfile failed supply-chain policy check (327 entries in 933ms)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 19 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-
+      21T13:00:19.768Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-
+      21T13:06:13.914Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-
+      21T12:59:22.386Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-
+      21T13:01:06.575Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-
+      21T13:01:42.301Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-
+      21T13:00:09.322Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-
+      21T12:59:38.024Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-
+      21T12:59:52.371Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-
+      21T13:01:04.242Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-
+      21T13:05:45.436Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-
+      21T13:02:05.003Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-
+      21T13:06:47.340Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-
+      21T13:00:55.814Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:15.215Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:16.798Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z,
+      within the minimumReleaseAge cutoff (2026-10-21T03:42:46.753Z)
+        electron-to-chromium@1.5.463 was published at 2026-10-
+      21T06:02:39.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:46.753Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:42:46.753Z)
+        vite@8.3.5 was published at 2026-10-21T06:35:40.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:42:46.753Z)
+  help: The lockfile contains entries that the active policies reject. This
+        can mean the lockfile is stale, or that someone committed a lockfile
+        that bypassed the policy locally — inspect recent changes to pnpm-
+        lock.yaml before trusting it. If the changes look expected, run "pnpm
+        clean --lockfile" and then "pnpm install" to rebuild from a fresh
+        resolution. If the fresh resolution still fails and you trust the
+        affected packages, relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+$ prettier --check . && eslint .
+Checking formatting...
+All matched files use Prettier code style!
+exit=0
+## pnpm build
+? Verifying lockfile against supply-chain policies (327 entries)...
+✗ Lockfile failed supply-chain policy check (327 entries in 1.1s)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 19 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-
+      21T13:00:19.768Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-
+      21T13:06:13.914Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-
+      21T12:59:22.386Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-
+      21T13:01:06.575Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-
+      21T13:01:42.301Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-
+      21T13:00:09.322Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-
+      21T12:59:38.024Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-
+      21T12:59:52.371Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-
+      21T13:01:04.242Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-
+      21T13:05:45.436Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-
+      21T13:02:05.003Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-
+      21T13:06:47.340Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-
+      21T13:00:55.814Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:15.215Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:16.798Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z,
+      within the minimumReleaseAge cutoff (2026-10-21T03:42:54.921Z)
+        electron-to-chromium@1.5.463 was published at 2026-10-
+      21T06:02:39.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:42:54.921Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:42:54.921Z)
+        vite@8.3.5 was published at 2026-10-21T06:35:40.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:42:54.921Z)
+  help: The lockfile contains entries that the active policies reject. This
+        can mean the lockfile is stale, or that someone committed a lockfile
+        that bypassed the policy locally — inspect recent changes to pnpm-
+        lock.yaml before trusting it. If the changes look expected, run "pnpm
+        clean --lockfile" and then "pnpm install" to rebuild from a fresh
+        resolution. If the fresh resolution still fails and you trust the
+        affected packages, relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+$ vite build
+vite v8.3.4 building ssr environment for production...
+transforming...
+✓ 227 modules transformed.
+rendering chunks...
+computing gzip size...
+.svelte-kit/output/server/.vite/manifest.json                                14.23 kB │ gzip:  1.62 kB
+.svelte-kit/output/server/_app/immutable/assets/PersonForm.C0Ur3Dd9.css       0.13 kB │ gzip:  0.11 kB
+.svelte-kit/output/server/_app/immutable/assets/ErrorPanel.BYf5l0Zy.css       0.14 kB │ gzip:  0.12 kB
+.svelte-kit/output/server/_app/immutable/assets/Pagination.48O6tcES.css       0.14 kB │ gzip:  0.13 kB
+.svelte-kit/output/server/_app/immutable/assets/ArtworkImage.CZjbvdIw.css     0.22 kB │ gzip:  0.17 kB
+.svelte-kit/output/server/_app/immutable/assets/Select.C4DgANgq.css           0.36 kB │ gzip:  0.22 kB
+.svelte-kit/output/server/_app/immutable/assets/ProgressBar.DasLXI-d.css      0.41 kB │ gzip:  0.25 kB
+.svelte-kit/output/server/_app/immutable/assets/ConfirmDialog.C72tqfvf.css    0.43 kB │ gzip:  0.27 kB
+.svelte-kit/output/server/_app/immutable/assets/TextArea.BpiqSS21.css         0.45 kB │ gzip:  0.24 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.CvQyy_-p.css            0.45 kB │ gzip:  0.24 kB
+.svelte-kit/output/server/_app/immutable/assets/TextField.De83p6Iq.css        0.46 kB │ gzip:  0.25 kB
+.svelte-kit/output/server/_app/immutable/assets/Skeleton.ClKP5PlV.css         0.50 kB │ gzip:  0.26 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.C0kWyMnw.css            0.54 kB │ gzip:  0.25 kB
+.svelte-kit/output/server/_app/immutable/assets/MovieForm.ZUueZ4Tg.css        0.62 kB │ gzip:  0.28 kB
+.svelte-kit/output/server/_app/immutable/assets/Button.kEYcdqQl.css           0.88 kB │ gzip:  0.39 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.BBVysw8Z.css            1.75 kB │ gzip:  0.59 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.CkBSfr1p.css            1.93 kB │ gzip:  0.64 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.OU0PgbxT.css            2.48 kB │ gzip:  0.81 kB
+.svelte-kit/output/server/_app/immutable/assets/_layout.rBpVsRLi.css          4.12 kB │ gzip:  1.33 kB
+.svelte-kit/output/server/chunks/index-server.js                              0.03 kB │ gzip:  0.05 kB
+.svelte-kit/output/server/entries/pages/_layout.ts.js                         0.15 kB │ gzip:  0.13 kB │ map:   0.32 kB
+.svelte-kit/output/server/entries/pages/_page.ts.js                           0.18 kB │ gzip:  0.16 kB │ map:   0.27 kB
+.svelte-kit/output/server/chunks/server.js                                    0.22 kB │ gzip:  0.15 kB │ map:   0.70 kB
+.svelte-kit/output/server/env.js                                              0.31 kB │ gzip:  0.19 kB │ map:   0.57 kB
+.svelte-kit/output/server/entries/pages/_page.svelte.js                       0.33 kB │ gzip:  0.25 kB │ map:   0.27 kB
+.svelte-kit/output/server/entries/fallbacks/error.svelte.js                   0.59 kB │ gzip:  0.37 kB │ map:   0.60 kB
+.svelte-kit/output/server/chunks/action.svelte.js                             0.69 kB │ gzip:  0.34 kB │ map:   1.63 kB
+.svelte-kit/output/server/chunks/navigation.js                                0.75 kB │ gzip:  0.39 kB │ map:   1.33 kB
+.svelte-kit/output/server/chunks/ArtworkImage.js                              0.89 kB │ gzip:  0.51 kB │ map:   1.81 kB
+.svelte-kit/output/server/chunks/state.js                                     0.90 kB │ gzip:  0.40 kB │ map:   2.36 kB
+.svelte-kit/output/server/chunks/toast.svelte.js                              0.96 kB │ gzip:  0.50 kB │ map:   2.12 kB
+.svelte-kit/output/server/chunks/Skeleton.js                                  1.06 kB │ gzip:  0.61 kB │ map:   1.94 kB
+.svelte-kit/output/server/entries/pages/people/new/_page.svelte.js            1.30 kB │ gzip:  0.53 kB │ map:   1.26 kB
+.svelte-kit/output/server/entries/pages/movies/new/_page.svelte.js            1.32 kB │ gzip:  0.55 kB │ map:   1.27 kB
+.svelte-kit/output/server/chunks/Pagination.js                                1.36 kB │ gzip:  0.59 kB │ map:   1.58 kB
+.svelte-kit/output/server/chunks/TextField.js                                 1.51 kB │ gzip:  0.65 kB │ map:   2.31 kB
+.svelte-kit/output/server/chunks/TextArea.js                                  1.61 kB │ gzip:  0.68 kB │ map:   2.33 kB
+.svelte-kit/output/server/chunks/Select.js                                    1.65 kB │ gzip:  0.68 kB │ map:   2.31 kB
+.svelte-kit/output/server/chunks/ConfirmDialog.js                             1.95 kB │ gzip:  0.70 kB │ map:   5.06 kB
+.svelte-kit/output/server/entries/pages/people/_id_/edit/_page.svelte.js      2.43 kB │ gzip:  0.88 kB │ map:   2.73 kB
+.svelte-kit/output/server/chunks/ProgressBar.js                               2.43 kB │ gzip:  1.21 kB │ map:   6.85 kB
+.svelte-kit/output/server/index.js                                            2.44 kB │ gzip:  1.00 kB │ map:   3.46 kB
+.svelte-kit/output/server/chunks/PersonForm.js                                2.48 kB │ gzip:  0.83 kB │ map:   3.06 kB
+.svelte-kit/output/server/entries/pages/movies/_id_/edit/_page.svelte.js      2.51 kB │ gzip:  0.91 kB │ map:   2.88 kB
+.svelte-kit/output/server/chunks/client.js                                    3.17 kB │ gzip:  1.37 kB │ map:   6.93 kB
+.svelte-kit/output/server/chunks/MovieForm.js                                 3.92 kB │ gzip:  1.28 kB │ map:   5.19 kB
+.svelte-kit/output/server/entries/pages/_layout.svelte.js                     5.15 kB │ gzip:  1.82 kB │ map:  10.86 kB
+.svelte-kit/output/server/chunks/ErrorPanel.js                                5.53 kB │ gzip:  2.22 kB │ map:   8.07 kB
+.svelte-kit/output/server/entries/pages/people/_id_/_page.svelte.js           6.22 kB │ gzip:  1.87 kB │ map:   7.91 kB
+.svelte-kit/output/server/entries/pages/people/_page.svelte.js                6.62 kB │ gzip:  2.00 kB │ map:   9.08 kB
+.svelte-kit/output/server/entries/pages/search/_page.svelte.js                6.68 kB │ gzip:  2.11 kB │ map:   9.77 kB
+.svelte-kit/output/server/chunks/Button.js                                    6.97 kB │ gzip:  2.28 kB │ map:  15.39 kB
+.svelte-kit/output/server/entries/pages/movies/_page.svelte.js                9.14 kB │ gzip:  2.63 kB │ map:  14.82 kB
+.svelte-kit/output/server/chunks/uneval.js                                   19.41 kB │ gzip:  5.37 kB │ map:  40.86 kB
+.svelte-kit/output/server/entries/pages/movies/_id_/_page.svelte.js          21.46 kB │ gzip:  5.42 kB │ map:  31.59 kB
+.svelte-kit/output/server/chunks/server-errors.js                            24.28 kB │ gzip:  4.60 kB │ map:  35.01 kB
+.svelte-kit/output/server/chunks/server2.js                                  46.61 kB │ gzip: 12.68 kB │ map: 128.44 kB
+.svelte-kit/output/server/remote-entry.js                                    55.37 kB │ gzip: 11.93 kB │ map:  90.76 kB
+.svelte-kit/output/server/chunks/internal.js                                114.86 kB │ gzip: 30.00 kB │ map: 243.46 kB
+.svelte-kit/output/server/chunks/instance.js                                130.75 kB │ gzip: 34.64 kB │ map: 259.35 kB
+
+✓ built in 403ms
+Analysing routes
+Building app
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 266 modules transformed.
+rendering chunks...
+computing gzip size...
+.svelte-kit/output/client/_app/version.json                                  0.02 kB │ gzip:  0.04 kB
+.svelte-kit/output/client/.vite/manifest.json                               16.40 kB │ gzip:  1.98 kB
+.svelte-kit/output/client/_app/immutable/assets/PersonForm.C0Ur3Dd9.css      0.13 kB │ gzip:  0.11 kB
+.svelte-kit/output/client/_app/immutable/assets/ErrorPanel.BYf5l0Zy.css      0.14 kB │ gzip:  0.12 kB
+.svelte-kit/output/client/_app/immutable/assets/Pagination.48O6tcES.css      0.14 kB │ gzip:  0.13 kB
+.svelte-kit/output/client/_app/immutable/assets/ArtworkImage.CZjbvdIw.css    0.22 kB │ gzip:  0.17 kB
+.svelte-kit/output/client/_app/immutable/assets/Select.C4DgANgq.css          0.36 kB │ gzip:  0.22 kB
+.svelte-kit/output/client/_app/immutable/assets/ProgressBar.DasLXI-d.css     0.41 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/assets/ConfirmDialog.C72tqfvf.css   0.43 kB │ gzip:  0.27 kB
+.svelte-kit/output/client/_app/immutable/assets/TextArea.BpiqSS21.css        0.45 kB │ gzip:  0.24 kB
+.svelte-kit/output/client/_app/immutable/assets/11.CvQyy_-p.css              0.45 kB │ gzip:  0.24 kB
+.svelte-kit/output/client/_app/immutable/assets/TextField.De83p6Iq.css       0.46 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/assets/Skeleton.ClKP5PlV.css        0.50 kB │ gzip:  0.26 kB
+.svelte-kit/output/client/_app/immutable/assets/8.C0kWyMnw.css               0.54 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/assets/MovieForm.ZUueZ4Tg.css       0.62 kB │ gzip:  0.28 kB
+.svelte-kit/output/client/_app/immutable/assets/Button.kEYcdqQl.css          0.88 kB │ gzip:  0.39 kB
+.svelte-kit/output/client/_app/immutable/assets/7.BBVysw8Z.css               1.75 kB │ gzip:  0.59 kB
+.svelte-kit/output/client/_app/immutable/assets/4.CkBSfr1p.css               1.93 kB │ gzip:  0.64 kB
+.svelte-kit/output/client/_app/immutable/assets/3.OU0PgbxT.css               2.48 kB │ gzip:  0.81 kB
+.svelte-kit/output/client/_app/immutable/assets/0.rBpVsRLi.css               4.12 kB │ gzip:  1.33 kB
+.svelte-kit/output/client/_app/immutable/chunks/CcaktEyh.js                  0.02 kB │ gzip:  0.04 kB
+.svelte-kit/output/client/_app/immutable/chunks/CR-Tzya9.js                  0.05 kB │ gzip:  0.06 kB
+.svelte-kit/output/client/_app/immutable/entry/payload.DSmR2FwN.js           0.06 kB │ gzip:  0.07 kB
+.svelte-kit/output/client/_app/immutable/chunks/ByXi3dt7.js                  0.11 kB │ gzip:  0.11 kB
+.svelte-kit/output/client/_app/immutable/chunks/DK3Fl9T5.js                  0.15 kB │ gzip:  0.15 kB
+.svelte-kit/output/client/_app/immutable/nodes/1._JT8ur_Q.js                 0.35 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/chunks/Cq2C-HF8.js                  0.41 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/entry/start.Xv9yt87M.js             0.60 kB │ gzip:  0.33 kB
+.svelte-kit/output/client/_app/immutable/chunks/kEZFXAgK.js                  0.60 kB │ gzip:  0.36 kB
+.svelte-kit/output/client/_app/immutable/chunks/DHHuiY2Y.js                  0.63 kB │ gzip:  0.42 kB
+.svelte-kit/output/client/_app/immutable/chunks/DkbKb9v_.js                  0.69 kB │ gzip:  0.44 kB
+.svelte-kit/output/client/_app/immutable/nodes/10.CxdPNzkY.js                0.71 kB │ gzip:  0.42 kB
+.svelte-kit/output/client/_app/immutable/nodes/6.C_D_iiO5.js                 0.74 kB │ gzip:  0.44 kB
+.svelte-kit/output/client/_app/immutable/chunks/DB1Ns7hF.js                  0.76 kB │ gzip:  0.47 kB
+.svelte-kit/output/client/_app/immutable/nodes/2.Cd4rS9-c.js                 0.97 kB │ gzip:  0.57 kB
+.svelte-kit/output/client/_app/immutable/chunks/DJvn-MXl.js                  0.98 kB │ gzip:  0.53 kB
+.svelte-kit/output/client/_app/immutable/chunks/CJG_ZHXv.js                  1.08 kB │ gzip:  0.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/CeBFsPzH.js                  1.15 kB │ gzip:  0.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/0CyJHsGt.js                  1.16 kB │ gzip:  0.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/B_059OEY.js                  1.18 kB │ gzip:  0.67 kB
+.svelte-kit/output/client/_app/immutable/chunks/Bjy-W4x2.js                  1.36 kB │ gzip:  0.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/C3m1Bvdp.js                  1.38 kB │ gzip:  0.73 kB
+.svelte-kit/output/client/_app/immutable/chunks/CRzLMJPS.js                  1.53 kB │ gzip:  0.80 kB
+.svelte-kit/output/client/_app/immutable/chunks/BsEDPqrZ.js                  1.54 kB │ gzip:  0.67 kB
+.svelte-kit/output/client/_app/immutable/nodes/9.DDwxLPYr.js                 1.55 kB │ gzip:  0.81 kB
+.svelte-kit/output/client/_app/immutable/nodes/5.BoVW68NM.js                 1.62 kB │ gzip:  0.84 kB
+.svelte-kit/output/client/_app/immutable/chunks/a3RmGBea.js                  1.64 kB │ gzip:  0.77 kB
+.svelte-kit/output/client/_app/immutable/chunks/D1gzEeBq.js                  1.68 kB │ gzip:  0.84 kB
+.svelte-kit/output/client/_app/immutable/chunks/vN5kgLHx.js                  1.75 kB │ gzip:  0.90 kB
+.svelte-kit/output/client/_app/immutable/chunks/Ck8WeKqq.js                  2.44 kB │ gzip:  1.21 kB
+.svelte-kit/output/client/_app/immutable/chunks/TeMMVPhs.js                  2.90 kB │ gzip:  1.45 kB
+.svelte-kit/output/client/_app/immutable/chunks/CF374dUv.js                  2.90 kB │ gzip:  1.37 kB
+.svelte-kit/output/client/_app/immutable/entry/app.xU55Nxkw.js               3.84 kB │ gzip:  1.38 kB
+.svelte-kit/output/client/_app/immutable/nodes/11.C-A3bA2j.js                4.20 kB │ gzip:  1.96 kB
+.svelte-kit/output/client/_app/immutable/nodes/0.CxsFWimT.js                 4.29 kB │ gzip:  2.11 kB
+.svelte-kit/output/client/_app/immutable/nodes/8.bI9tAFJI.js                 4.42 kB │ gzip:  2.00 kB
+.svelte-kit/output/client/_app/immutable/nodes/7.hWO60id0.js                 4.43 kB │ gzip:  1.93 kB
+.svelte-kit/output/client/_app/immutable/nodes/3.D5KwQCak.js                 6.40 kB │ gzip:  2.73 kB
+.svelte-kit/output/client/_app/immutable/chunks/D1mqfBY5.js                  8.00 kB │ gzip:  3.06 kB
+.svelte-kit/output/client/_app/immutable/nodes/4.5cENjrlQ.js                15.40 kB │ gzip:  5.61 kB
+.svelte-kit/output/client/_app/immutable/chunks/TRtnzL_N.js                 41.61 kB │ gzip: 15.33 kB
+.svelte-kit/output/client/_app/immutable/chunks/Dn9XkRk7.js                 50.39 kB │ gzip: 19.15 kB
+
+✓ built in 258ms
+
+Run [1m[36mnpm run preview[39m[22m to preview your production build locally.
+[1m[36m
+> Using @sveltejs/adapter-static[39m[22m
+Wrote site to "build"
+✔ done
+exit=0

@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-movie
+      author: movie-catalog
+      changes:
+        - createTable:
+            tableName: movie
+            columns:
+              - column: { name: id, type: uuid, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: title, type: varchar(200), constraints: { nullable: false } }
+              - column: { name: title_key, type: varchar(200), constraints: { nullable: false } }
+              - column: { name: release_year, type: int, constraints: { nullable: false } }
+              - column: { name: runtime_minutes, type: int }
+              - column: { name: synopsis, type: varchar(2000), defaultValue: "", constraints: { nullable: false } }
+              - column: { name: created_at, type: timestamp with time zone, constraints: { nullable: false } }
+              - column: { name: updated_at, type: timestamp with time zone, constraints: { nullable: false } }
+        - addUniqueConstraint:
+            tableName: movie
+            columnNames: title_key, release_year
+            constraintName: uq_movie_title_year
+        - createIndex:
+            tableName: movie
+            indexName: idx_movie_release_year
+            columns:
+              - column: { name: release_year }
+        - createTable:
+            tableName: movie_genre
+            columns:
+              - column: { name: movie_id, type: uuid, constraints: { nullable: false } }
+              - column: { name: genre, type: varchar(20), constraints: { nullable: false } }
+        - addPrimaryKey:
+            tableName: movie_genre
+            columnNames: movie_id, genre
+            constraintName: pk_movie_genre
+        - addForeignKeyConstraint:
+            baseTableName: movie_genre
+            baseColumnNames: movie_id
+            referencedTableName: movie
+            referencedColumnNames: id
+            onDelete: CASCADE
+            constraintName: fk_movie_genre_movie
+        - createIndex:
+            tableName: movie_genre
+            indexName: idx_movie_genre_genre
+            columns:
+              - column: { name: genre }

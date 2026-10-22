@@ -1,0 +1,46 @@
+Starting a Gradle Daemon, 1 busy and 1 stopped Daemons could not be reused, use --status for details
+> Task :api-gateway:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :contracts:protobufDummy UP-TO-DATE
+> Task :contracts:extractIncludeProto UP-TO-DATE
+> Task :contracts:extractProto UP-TO-DATE
+> Task :contracts:generateProto UP-TO-DATE
+> Task :contracts:compileJava UP-TO-DATE
+> Task :service-support:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :service-support:compileKotlin UP-TO-DATE
+> Task :service-support:compileJava NO-SOURCE
+> Task :api-gateway:processResources UP-TO-DATE
+> Task :api-gateway:processTestResources NO-SOURCE
+> Task :contracts:processResources UP-TO-DATE
+> Task :contracts:classes UP-TO-DATE
+> Task :contracts:jar UP-TO-DATE
+> Task :service-support:processResources NO-SOURCE
+> Task :service-support:classes UP-TO-DATE
+> Task :service-support:jar UP-TO-DATE
+> Task :api-gateway:compileKotlin
+> Task :api-gateway:compileJava NO-SOURCE
+> Task :api-gateway:classes UP-TO-DATE
+> Task :api-gateway:jar
+> Task :api-gateway:compileTestKotlin
+> Task :api-gateway:compileTestJava NO-SOURCE
+> Task :api-gateway:testClasses UP-TO-DATE
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-22T14:34:48.344+08:00  INFO [] 64792 --- [api-gateway] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-22T14:34:50.392+08:00  INFO [] 64792 --- [api-gateway] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-22T14:34:50.420+08:00  INFO [] 64792 --- [api-gateway] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-22T14:34:52.434+08:00  INFO [] 64792 --- [api-gateway] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-22T14:34:52.453+08:00  INFO [] 64792 --- [api-gateway] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-22T14:34:54.469+08:00  INFO [] 64792 --- [api-gateway] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+> Task :api-gateway:test
+w: Detected multiple Kotlin daemon sessions at 
+
+[Incubating] Problems report is available at: file:///Users/balajisrinivasan/Documents/projects/movie-catalog/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 29s
+13 actionable tasks: 4 executed, 9 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.2/userguide/configuration_cache_enabling.html

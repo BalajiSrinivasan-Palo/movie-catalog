@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package moviecatalog.common.v1;
+
+option java_multiple_files = true;
+option java_package = "com.moviecatalog.contracts.common.v1";
+
+// Page request. Zero-based page index. The server validates size (1..100) and
+// rejects out-of-range values with INVALID_ARGUMENT (BRD section 7, "Paging").
+message PageRequest {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message PageInfo {
+  int32 page = 1;
+  int32 size = 2;
+  int64 total_elements = 3;
+  int32 total_pages = 4;
+}
+
+enum SortDirection {
+  SORT_DIRECTION_UNSPECIFIED = 0; // server default: ascending
+  SORT_DIRECTION_ASC = 1;
+  SORT_DIRECTION_DESC = 2;
+}
+
+// Calendar date without time zone (avoids pulling in google/type/date.proto).
+message Date {
+  int32 year = 1;
+  int32 month = 2; // 1..12
+  int32 day = 3;   // 1..31
+}
+
+// Error detail attached to the google.rpc.Status of every failed call
+// (see docs/architecture/architecture.md, section "Error handling").
+// Services attach it with io.grpc.protobuf.StatusProto; the gateway reads it
+// to build GraphQL errors. `code` is a stable machine-readable value, never
+// shown to end users directly.
+message ErrorDetail {
+  string code = 1;                       // e.g. "movie.duplicate", "person.has_credits"
+  repeated FieldViolation violations = 2; // validation failures, one per field
+  map<string, string> metadata = 3;      // small, non-sensitive context, e.g. "creditCount" for person.has_credits
+  repeated BlockingMovie blocking_movies = 4; // only for person.has_credits
+}
+
+message FieldViolation {
+  string field = 1;       // input field path, e.g. "title" or "genres[2]"
+  string message_key = 2; // BRD message key, e.g. "movie.title.invalid"
+}
+
+message BlockingMovie {
+  string id = 1;
+  string title = 2;
+  int32 release_year = 3;
+}

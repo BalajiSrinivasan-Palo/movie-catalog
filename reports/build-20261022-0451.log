@@ -1,0 +1,124 @@
+> Task :api-gateway:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :contracts:protobufDummy UP-TO-DATE
+> Task :contracts:extractIncludeProto
+> Task :contracts:extractProto
+> Task :contracts:generateProto
+> Task :contracts:compileJava
+> Task :service-support:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :api-gateway:processResources
+> Task :contracts:processResources
+> Task :contracts:classes
+> Task :contracts:jar
+> Task :service-support:processResources NO-SOURCE
+> Task :api-gateway:processTestResources NO-SOURCE
+> Task :contracts:assemble
+> Task :contracts:extractIncludeTestProto
+> Task :contracts:extractTestProto
+> Task :contracts:generateTestProto NO-SOURCE
+> Task :contracts:compileTestJava NO-SOURCE
+> Task :contracts:processTestResources NO-SOURCE
+> Task :contracts:testClasses UP-TO-DATE
+> Task :contracts:test NO-SOURCE
+> Task :contracts:check UP-TO-DATE
+> Task :contracts:build
+> Task :movie-service:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :movie-service:processResources
+> Task :movie-service:processTestResources NO-SOURCE
+> Task :people-service:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :people-service:processResources
+> Task :people-service:processTestResources NO-SOURCE
+> Task :service-support:processTestResources NO-SOURCE
+> Task :service-support:compileKotlin
+> Task :service-support:compileJava NO-SOURCE
+> Task :service-support:classes UP-TO-DATE
+> Task :service-support:jar
+> Task :service-support:assemble
+> Task :service-support:compileTestKotlin
+> Task :service-support:compileTestJava NO-SOURCE
+> Task :service-support:testClasses UP-TO-DATE
+
+> Task :api-gateway:compileKotlin
+w: file:///Users/balajisrinivasan/Documents/projects/movie-catalog/api-gateway/src/main/kotlin/com/moviecatalog/gateway/Web.kt:52:18 This annotation is currently applied to the value parameter only, but in the future it will also be applied to field.
+- To opt in to applying to both value parameter and field, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+
+> Task :people-service:compileKotlin
+> Task :movie-service:compileKotlin
+> Task :service-support:test
+> Task :api-gateway:compileJava NO-SOURCE
+> Task :api-gateway:classes
+> Task :api-gateway:resolveMainClassName
+> Task :api-gateway:bootJar
+> Task :api-gateway:jar
+> Task :api-gateway:assemble
+> Task :movie-service:compileJava NO-SOURCE
+> Task :movie-service:classes
+> Task :movie-service:resolveMainClassName
+> Task :movie-service:bootJar
+> Task :movie-service:jar
+> Task :movie-service:assemble
+> Task :people-service:compileJava NO-SOURCE
+> Task :people-service:classes
+> Task :people-service:resolveMainClassName
+> Task :api-gateway:compileTestKotlin
+> Task :people-service:bootJar
+> Task :api-gateway:compileTestJava NO-SOURCE
+> Task :api-gateway:testClasses UP-TO-DATE
+> Task :movie-service:compileTestKotlin
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-22T04:52:12.292+08:00  INFO [] 66877 --- [api-gateway] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-22T04:52:14.307+08:00  INFO [] 66877 --- [api-gateway] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-22T04:52:14.338+08:00  INFO [] 66877 --- [api-gateway] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-22T04:52:16.350+08:00  INFO [] 66877 --- [api-gateway] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+> Task :api-gateway:test
+> Task :api-gateway:check
+> Task :api-gateway:build
+> Task :movie-service:compileTestJava NO-SOURCE
+> Task :movie-service:testClasses UP-TO-DATE
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-22T04:52:28.729+08:00  INFO [] 66913 --- [movie-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T04:52:28.730+08:00  INFO [] 66913 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-22T04:52:28.741+08:00  INFO [] 66913 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-22T04:52:28.743+08:00  INFO [] 66913 --- [movie-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T04:52:28.743+08:00  INFO [] 66913 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-10-22T04:52:28.743+08:00  INFO [] 66913 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-10-22T04:52:28.744+08:00  INFO [] 66913 --- [movie-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T04:52:28.745+08:00  INFO [] 66913 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-10-22T04:52:28.797+08:00  INFO [] 66913 --- [movie-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+> Task :movie-service:test
+> Task :movie-service:check
+> Task :movie-service:build
+> Task :people-service:jar
+> Task :people-service:assemble
+> Task :service-support:check
+> Task :service-support:build
+> Task :people-service:compileTestKotlin
+> Task :people-service:compileTestJava NO-SOURCE
+> Task :people-service:testClasses UP-TO-DATE
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-22T04:52:41.615+08:00  INFO [] 66979 --- [people-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T04:52:41.616+08:00  INFO [] 66979 --- [people-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-22T04:52:41.725+08:00  INFO [] 66979 --- [people-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-22T04:52:41.727+08:00  INFO [] 66979 --- [people-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T04:52:41.727+08:00  INFO [] 66979 --- [people-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-10-22T04:52:41.728+08:00  INFO [] 66979 --- [people-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-10-22T04:52:41.729+08:00  INFO [] 66979 --- [people-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T04:52:41.729+08:00  INFO [] 66979 --- [people-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-10-22T04:52:41.736+08:00  INFO [] 66979 --- [people-service] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+> Task :people-service:test
+> Task :people-service:check
+> Task :people-service:build
+
+[Incubating] Problems report is available at: file:///Users/balajisrinivasan/Documents/projects/movie-catalog/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 44s
+33 actionable tasks: 33 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.2/userguide/configuration_cache_enabling.html

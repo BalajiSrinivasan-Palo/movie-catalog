@@ -1,0 +1,36 @@
+# Single source of build versions (ADR-013). Boot, Kotlin and Gradle versions come from the
+# Spring Initializr skeleton resolved on the owner's machine on 2026-10-22.
+# gRPC and protobuf versions are NOT from the skeleton: they were chosen by hand and are
+# unverified until the first successful `./gradlew build` (see reports/S-001/).
+[versions]
+kotlin = "2.3.21"
+springBoot = "4.1.1"
+springDependencyManagement = "1.1.7"
+protobufPlugin = "0.9.5"
+grpc = "1.83.1"
+protobuf = "4.33.0"
+twelvemonkeys = "3.12.0"
+
+[libraries]
+grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
+grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded", version.ref = "grpc" }
+grpc-services = { module = "io.grpc:grpc-services", version.ref = "grpc" }
+grpc-inprocess = { module = "io.grpc:grpc-inprocess", version.ref = "grpc" }
+protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
+# protoc and the gRPC codegen plugin are downloaded as Maven artifacts; no local install.
+protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
+grpc-protoc-gen = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc" }
+# Generated gRPC stubs carry @javax.annotation.Generated.
+grpc-api = { module = "io.grpc:grpc-api", version.ref = "grpc" }
+# WebP reader for ImageIO (ADR-012). Version chosen by hand: unverified until the first build.
+imageio-webp = { module = "com.twelvemonkeys.imageio:imageio-webp", version.ref = "twelvemonkeys" }
+annotations-api = { module = "org.apache.tomcat:annotations-api", version = "6.0.53" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "springDependencyManagement" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }

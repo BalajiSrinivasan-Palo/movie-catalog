@@ -1,0 +1,314 @@
+./gradlew --console=plain build
+> Task :api-gateway:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :contracts:protobufDummy UP-TO-DATE
+> Task :contracts:extractIncludeProto UP-TO-DATE
+> Task :contracts:extractProto UP-TO-DATE
+> Task :contracts:generateProto UP-TO-DATE
+> Task :contracts:compileJava UP-TO-DATE
+> Task :service-support:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :service-support:compileKotlin UP-TO-DATE
+> Task :service-support:compileJava NO-SOURCE
+> Task :api-gateway:compileKotlin UP-TO-DATE
+> Task :api-gateway:compileJava NO-SOURCE
+> Task :api-gateway:processResources UP-TO-DATE
+> Task :api-gateway:classes UP-TO-DATE
+> Task :api-gateway:resolveMainClassName UP-TO-DATE
+> Task :contracts:processResources UP-TO-DATE
+> Task :contracts:classes UP-TO-DATE
+> Task :contracts:jar UP-TO-DATE
+> Task :service-support:processResources NO-SOURCE
+> Task :service-support:classes UP-TO-DATE
+> Task :service-support:jar UP-TO-DATE
+> Task :api-gateway:bootJar UP-TO-DATE
+> Task :api-gateway:jar UP-TO-DATE
+> Task :api-gateway:assemble UP-TO-DATE
+> Task :api-gateway:compileTestKotlin UP-TO-DATE
+> Task :api-gateway:compileTestJava NO-SOURCE
+> Task :api-gateway:processTestResources NO-SOURCE
+> Task :api-gateway:testClasses UP-TO-DATE
+> Task :api-gateway:test UP-TO-DATE
+> Task :api-gateway:check UP-TO-DATE
+> Task :api-gateway:build UP-TO-DATE
+> Task :contracts:assemble UP-TO-DATE
+> Task :contracts:extractIncludeTestProto UP-TO-DATE
+> Task :contracts:extractTestProto UP-TO-DATE
+> Task :contracts:generateTestProto NO-SOURCE
+> Task :contracts:compileTestJava NO-SOURCE
+> Task :contracts:processTestResources NO-SOURCE
+> Task :contracts:testClasses UP-TO-DATE
+> Task :contracts:test NO-SOURCE
+> Task :contracts:check UP-TO-DATE
+> Task :contracts:build UP-TO-DATE
+> Task :movie-service:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :movie-service:compileKotlin UP-TO-DATE
+> Task :movie-service:compileJava NO-SOURCE
+> Task :movie-service:processResources UP-TO-DATE
+> Task :movie-service:classes UP-TO-DATE
+> Task :movie-service:resolveMainClassName UP-TO-DATE
+> Task :movie-service:bootJar UP-TO-DATE
+> Task :movie-service:jar UP-TO-DATE
+> Task :movie-service:assemble UP-TO-DATE
+> Task :movie-service:compileTestKotlin UP-TO-DATE
+> Task :movie-service:compileTestJava NO-SOURCE
+> Task :movie-service:processTestResources NO-SOURCE
+> Task :movie-service:testClasses UP-TO-DATE
+> Task :movie-service:streamingTest UP-TO-DATE
+> Task :movie-service:test UP-TO-DATE
+> Task :movie-service:check UP-TO-DATE
+> Task :movie-service:build UP-TO-DATE
+> Task :people-service:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :people-service:compileKotlin UP-TO-DATE
+> Task :people-service:compileJava NO-SOURCE
+> Task :people-service:processResources UP-TO-DATE
+> Task :people-service:classes UP-TO-DATE
+> Task :people-service:resolveMainClassName UP-TO-DATE
+> Task :people-service:bootJar UP-TO-DATE
+> Task :people-service:jar UP-TO-DATE
+> Task :people-service:assemble UP-TO-DATE
+> Task :people-service:compileTestKotlin UP-TO-DATE
+> Task :people-service:compileTestJava NO-SOURCE
+> Task :people-service:processTestResources NO-SOURCE
+> Task :people-service:testClasses UP-TO-DATE
+> Task :people-service:test UP-TO-DATE
+> Task :people-service:check UP-TO-DATE
+> Task :people-service:build UP-TO-DATE
+> Task :service-support:assemble UP-TO-DATE
+> Task :service-support:compileTestKotlin UP-TO-DATE
+> Task :service-support:compileTestJava NO-SOURCE
+> Task :service-support:processTestResources NO-SOURCE
+> Task :service-support:testClasses UP-TO-DATE
+> Task :service-support:test UP-TO-DATE
+> Task :service-support:check UP-TO-DATE
+> Task :service-support:build UP-TO-DATE
+
+[Incubating] Problems report is available at: file:///Users/balajisrinivasan/Documents/projects/movie-catalog/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 2s
+34 actionable tasks: 34 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.2/userguide/configuration_cache_enabling.html
+cd frontend && pnpm build
+? Verifying lockfile against supply-chain policies (327 entries)...
+Progress: resolved 58, reused 23, downloaded 1, added 23
+Downloading @rolldown/binding-darwin-arm64@1.2.15: 0.00 B/7.53 MB
+Progress: resolved 58, reused 23, downloaded 32, added 42
+Downloading @rolldown/binding-darwin-arm64@1.2.15: 5.57 MB/7.53 MB
+✗ Lockfile failed supply-chain policy check (327 entries in 4.4s)
+Lockfile is up to date, resolution step is skipped
+Error: ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION
+
+  × installing dependencies
+  ╰─▶ 19 lockfile entries failed verification:
+        @rolldown/binding-android-arm-eabi@1.2.15 was published at 2026-10-
+      21T13:00:19.768Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-android-arm64@1.2.15 was published at 2026-10-
+      21T13:06:13.914Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-darwin-arm64@1.2.15 was published at 2026-10-
+      21T12:59:22.386Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-darwin-x64@1.2.15 was published at 2026-10-
+      21T13:01:06.575Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-freebsd-x64@1.2.15 was published at 2026-10-
+      21T13:01:42.301Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-linux-arm-gnueabihf@1.2.15 was published at 2026-10-
+      21T13:00:09.322Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-linux-arm64-gnu@1.2.15 was published at 2026-10-
+      21T12:59:38.024Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-linux-arm64-musl@1.2.15 was published at 2026-10-
+      21T12:59:52.371Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-linux-ppc64-gnu@1.2.15 was published at 2026-10-
+      21T13:01:04.242Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-linux-s390x-gnu@1.2.15 was published at 2026-10-
+      21T13:05:45.436Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-linux-x64-gnu@1.2.15 was published at 2026-10-
+      21T13:02:05.003Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-linux-x64-musl@1.2.15 was published at 2026-10-
+      21T13:06:47.340Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-openharmony-arm64@1.2.15 was published at 2026-10-
+      21T13:00:55.814Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-win32-arm64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:15.215Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        @rolldown/binding-win32-x64-msvc@1.2.15 was published at 2026-10-
+      21T13:01:16.798Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        caniuse-lite@1.0.30001818 was published at 2026-10-21T10:34:59.000Z,
+      within the minimumReleaseAge cutoff (2026-10-21T03:18:58.198Z)
+        electron-to-chromium@1.5.463 was published at 2026-10-
+      21T06:02:39.000Z, within the minimumReleaseAge cutoff (2026-10-
+      21T03:18:58.198Z)
+        rolldown@1.2.15 was published at 2026-10-21T13:08:47.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:18:58.198Z)
+        vite@8.3.5 was published at 2026-10-21T06:35:40.000Z, within the
+      minimumReleaseAge cutoff (2026-10-21T03:18:58.198Z)
+  help: The lockfile contains entries that the active policies reject. This
+        can mean the lockfile is stale, or that someone committed a lockfile
+        that bypassed the policy locally — inspect recent changes to pnpm-
+        lock.yaml before trusting it. If the changes look expected, run "pnpm
+        clean --lockfile" and then "pnpm install" to rebuild from a fresh
+        resolution. If the fresh resolution still fails and you trust the
+        affected packages, relax the policy that flagged them.
+
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+$ vite build
+vite v8.3.4 building ssr environment for production...
+transforming...
+✓ 222 modules transformed.
+rendering chunks...
+computing gzip size...
+.svelte-kit/output/server/.vite/manifest.json                                14.23 kB │ gzip:  1.62 kB
+.svelte-kit/output/server/_app/immutable/assets/PersonForm.C0Ur3Dd9.css       0.13 kB │ gzip:  0.11 kB
+.svelte-kit/output/server/_app/immutable/assets/ErrorPanel.BYf5l0Zy.css       0.14 kB │ gzip:  0.12 kB
+.svelte-kit/output/server/_app/immutable/assets/Pagination.48O6tcES.css       0.14 kB │ gzip:  0.13 kB
+.svelte-kit/output/server/_app/immutable/assets/ArtworkImage.CZjbvdIw.css     0.22 kB │ gzip:  0.17 kB
+.svelte-kit/output/server/_app/immutable/assets/Skeleton.T3bV4mVr.css         0.36 kB │ gzip:  0.22 kB
+.svelte-kit/output/server/_app/immutable/assets/Select.C4DgANgq.css           0.36 kB │ gzip:  0.22 kB
+.svelte-kit/output/server/_app/immutable/assets/ProgressBar.DasLXI-d.css      0.41 kB │ gzip:  0.25 kB
+.svelte-kit/output/server/_app/immutable/assets/ConfirmDialog.C72tqfvf.css    0.43 kB │ gzip:  0.27 kB
+.svelte-kit/output/server/_app/immutable/assets/TextArea.BpiqSS21.css         0.45 kB │ gzip:  0.24 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.CvQyy_-p.css            0.45 kB │ gzip:  0.24 kB
+.svelte-kit/output/server/_app/immutable/assets/TextField.De83p6Iq.css        0.46 kB │ gzip:  0.25 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.C0kWyMnw.css            0.54 kB │ gzip:  0.25 kB
+.svelte-kit/output/server/_app/immutable/assets/MovieForm.ZUueZ4Tg.css        0.62 kB │ gzip:  0.28 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.Bw6ZYXkA.css            0.77 kB │ gzip:  0.34 kB
+.svelte-kit/output/server/_app/immutable/assets/Button.kEYcdqQl.css           0.88 kB │ gzip:  0.39 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.CRurK-n-.css            1.15 kB │ gzip:  0.46 kB
+.svelte-kit/output/server/_app/immutable/assets/_page.CkBSfr1p.css            1.93 kB │ gzip:  0.64 kB
+.svelte-kit/output/server/_app/immutable/assets/_layout.DkSvS0Y8.css          3.62 kB │ gzip:  1.21 kB
+.svelte-kit/output/server/chunks/index-server.js                              0.03 kB │ gzip:  0.05 kB
+.svelte-kit/output/server/entries/pages/_layout.ts.js                         0.15 kB │ gzip:  0.13 kB │ map:   0.32 kB
+.svelte-kit/output/server/entries/pages/_page.ts.js                           0.18 kB │ gzip:  0.16 kB │ map:   0.27 kB
+.svelte-kit/output/server/chunks/server.js                                    0.22 kB │ gzip:  0.15 kB │ map:   0.70 kB
+.svelte-kit/output/server/env.js                                              0.31 kB │ gzip:  0.19 kB │ map:   0.57 kB
+.svelte-kit/output/server/entries/pages/_page.svelte.js                       0.33 kB │ gzip:  0.25 kB │ map:   0.27 kB
+.svelte-kit/output/server/entries/fallbacks/error.svelte.js                   0.59 kB │ gzip:  0.37 kB │ map:   0.60 kB
+.svelte-kit/output/server/chunks/action.svelte.js                             0.69 kB │ gzip:  0.34 kB │ map:   1.63 kB
+.svelte-kit/output/server/chunks/navigation.js                                0.75 kB │ gzip:  0.39 kB │ map:   1.33 kB
+.svelte-kit/output/server/chunks/Skeleton.js                                  0.82 kB │ gzip:  0.49 kB │ map:   1.32 kB
+.svelte-kit/output/server/chunks/ArtworkImage.js                              0.89 kB │ gzip:  0.51 kB │ map:   1.81 kB
+.svelte-kit/output/server/chunks/state.js                                     0.90 kB │ gzip:  0.40 kB │ map:   2.36 kB
+.svelte-kit/output/server/chunks/toast.svelte.js                              0.96 kB │ gzip:  0.50 kB │ map:   2.12 kB
+.svelte-kit/output/server/entries/pages/people/new/_page.svelte.js            1.30 kB │ gzip:  0.53 kB │ map:   1.26 kB
+.svelte-kit/output/server/entries/pages/movies/new/_page.svelte.js            1.32 kB │ gzip:  0.55 kB │ map:   1.27 kB
+.svelte-kit/output/server/chunks/Pagination.js                                1.36 kB │ gzip:  0.59 kB │ map:   1.58 kB
+.svelte-kit/output/server/chunks/TextField.js                                 1.51 kB │ gzip:  0.65 kB │ map:   2.31 kB
+.svelte-kit/output/server/chunks/TextArea.js                                  1.61 kB │ gzip:  0.68 kB │ map:   2.33 kB
+.svelte-kit/output/server/chunks/Select.js                                    1.65 kB │ gzip:  0.68 kB │ map:   2.31 kB
+.svelte-kit/output/server/chunks/ConfirmDialog.js                             1.95 kB │ gzip:  0.70 kB │ map:   5.06 kB
+.svelte-kit/output/server/entries/pages/people/_id_/edit/_page.svelte.js      2.43 kB │ gzip:  0.88 kB │ map:   2.73 kB
+.svelte-kit/output/server/chunks/ProgressBar.js                               2.43 kB │ gzip:  1.21 kB │ map:   6.85 kB
+.svelte-kit/output/server/index.js                                            2.44 kB │ gzip:  1.00 kB │ map:   3.46 kB
+.svelte-kit/output/server/chunks/PersonForm.js                                2.48 kB │ gzip:  0.83 kB │ map:   3.06 kB
+.svelte-kit/output/server/entries/pages/movies/_id_/edit/_page.svelte.js      2.51 kB │ gzip:  0.91 kB │ map:   2.88 kB
+.svelte-kit/output/server/chunks/client.js                                    3.17 kB │ gzip:  1.37 kB │ map:   6.93 kB
+.svelte-kit/output/server/chunks/MovieForm.js                                 3.92 kB │ gzip:  1.28 kB │ map:   5.19 kB
+.svelte-kit/output/server/entries/pages/_layout.svelte.js                     5.15 kB │ gzip:  1.82 kB │ map:  10.58 kB
+.svelte-kit/output/server/chunks/ErrorPanel.js                                5.53 kB │ gzip:  2.22 kB │ map:   8.07 kB
+.svelte-kit/output/server/entries/pages/people/_page.svelte.js                5.60 kB │ gzip:  1.65 kB │ map:   6.48 kB
+.svelte-kit/output/server/entries/pages/people/_id_/_page.svelte.js           6.22 kB │ gzip:  1.87 kB │ map:   7.91 kB
+.svelte-kit/output/server/entries/pages/search/_page.svelte.js                6.68 kB │ gzip:  2.11 kB │ map:   9.77 kB
+.svelte-kit/output/server/chunks/Button.js                                    6.97 kB │ gzip:  2.28 kB │ map:  15.39 kB
+.svelte-kit/output/server/entries/pages/movies/_page.svelte.js                7.38 kB │ gzip:  2.09 kB │ map:  10.11 kB
+.svelte-kit/output/server/chunks/uneval.js                                   19.41 kB │ gzip:  5.37 kB │ map:  40.86 kB
+.svelte-kit/output/server/entries/pages/movies/_id_/_page.svelte.js          21.46 kB │ gzip:  5.42 kB │ map:  31.59 kB
+.svelte-kit/output/server/chunks/server-errors.js                            24.28 kB │ gzip:  4.60 kB │ map:  35.01 kB
+.svelte-kit/output/server/chunks/server2.js                                  46.61 kB │ gzip: 12.68 kB │ map: 128.44 kB
+.svelte-kit/output/server/remote-entry.js                                    55.37 kB │ gzip: 11.93 kB │ map:  90.76 kB
+.svelte-kit/output/server/chunks/internal.js                                114.86 kB │ gzip: 30.00 kB │ map: 243.46 kB
+.svelte-kit/output/server/chunks/instance.js                                130.76 kB │ gzip: 34.64 kB │ map: 259.35 kB
+
+✓ built in 339ms
+Analysing routes
+Building app
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 261 modules transformed.
+rendering chunks...
+computing gzip size...
+.svelte-kit/output/client/_app/version.json                                  0.02 kB │ gzip:  0.04 kB
+.svelte-kit/output/client/.vite/manifest.json                               16.40 kB │ gzip:  1.98 kB
+.svelte-kit/output/client/_app/immutable/assets/PersonForm.C0Ur3Dd9.css      0.13 kB │ gzip:  0.11 kB
+.svelte-kit/output/client/_app/immutable/assets/ErrorPanel.BYf5l0Zy.css      0.14 kB │ gzip:  0.12 kB
+.svelte-kit/output/client/_app/immutable/assets/Pagination.48O6tcES.css      0.14 kB │ gzip:  0.13 kB
+.svelte-kit/output/client/_app/immutable/assets/ArtworkImage.CZjbvdIw.css    0.22 kB │ gzip:  0.17 kB
+.svelte-kit/output/client/_app/immutable/assets/Skeleton.T3bV4mVr.css        0.36 kB │ gzip:  0.22 kB
+.svelte-kit/output/client/_app/immutable/assets/Select.C4DgANgq.css          0.36 kB │ gzip:  0.22 kB
+.svelte-kit/output/client/_app/immutable/assets/ProgressBar.DasLXI-d.css     0.41 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/assets/ConfirmDialog.C72tqfvf.css   0.43 kB │ gzip:  0.27 kB
+.svelte-kit/output/client/_app/immutable/assets/TextArea.BpiqSS21.css        0.45 kB │ gzip:  0.24 kB
+.svelte-kit/output/client/_app/immutable/assets/11.CvQyy_-p.css              0.45 kB │ gzip:  0.24 kB
+.svelte-kit/output/client/_app/immutable/assets/TextField.De83p6Iq.css       0.46 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/assets/8.C0kWyMnw.css               0.54 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/assets/MovieForm.ZUueZ4Tg.css       0.62 kB │ gzip:  0.28 kB
+.svelte-kit/output/client/_app/immutable/assets/7.Bw6ZYXkA.css               0.77 kB │ gzip:  0.34 kB
+.svelte-kit/output/client/_app/immutable/assets/Button.kEYcdqQl.css          0.88 kB │ gzip:  0.39 kB
+.svelte-kit/output/client/_app/immutable/assets/3.CRurK-n-.css               1.15 kB │ gzip:  0.46 kB
+.svelte-kit/output/client/_app/immutable/assets/4.CkBSfr1p.css               1.93 kB │ gzip:  0.64 kB
+.svelte-kit/output/client/_app/immutable/assets/0.DkSvS0Y8.css               3.62 kB │ gzip:  1.21 kB
+.svelte-kit/output/client/_app/immutable/chunks/CpNKgH9C.js                  0.02 kB │ gzip:  0.04 kB
+.svelte-kit/output/client/_app/immutable/chunks/C3e6DKJB.js                  0.05 kB │ gzip:  0.06 kB
+.svelte-kit/output/client/_app/immutable/entry/payload.DSmR2FwN.js           0.06 kB │ gzip:  0.07 kB
+.svelte-kit/output/client/_app/immutable/chunks/Ci1tDWdc.js                  0.11 kB │ gzip:  0.11 kB
+.svelte-kit/output/client/_app/immutable/chunks/DK3Fl9T5.js                  0.15 kB │ gzip:  0.15 kB
+.svelte-kit/output/client/_app/immutable/nodes/1.CpJGt8rE.js                 0.35 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/chunks/EefB3oID.js                  0.41 kB │ gzip:  0.25 kB
+.svelte-kit/output/client/_app/immutable/chunks/HO9-HGvE.js                  0.50 kB │ gzip:  0.35 kB
+.svelte-kit/output/client/_app/immutable/entry/start.Cs_up5oG.js             0.60 kB │ gzip:  0.33 kB
+.svelte-kit/output/client/_app/immutable/chunks/24w6FojS.js                  0.60 kB │ gzip:  0.36 kB
+.svelte-kit/output/client/_app/immutable/chunks/VVeAtL0t.js                  0.69 kB │ gzip:  0.44 kB
+.svelte-kit/output/client/_app/immutable/nodes/10.BmTTGxUd.js                0.71 kB │ gzip:  0.43 kB
+.svelte-kit/output/client/_app/immutable/nodes/6.DylFYtkR.js                 0.74 kB │ gzip:  0.44 kB
+.svelte-kit/output/client/_app/immutable/chunks/BXRkmb1t.js                  0.76 kB │ gzip:  0.47 kB
+.svelte-kit/output/client/_app/immutable/nodes/2.Bjyh_z-w.js                 0.97 kB │ gzip:  0.57 kB
+.svelte-kit/output/client/_app/immutable/chunks/BjexSLVN.js                  0.98 kB │ gzip:  0.54 kB
+.svelte-kit/output/client/_app/immutable/chunks/Br-U2zK_.js                  1.08 kB │ gzip:  0.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/CYVY5stZ.js                  1.15 kB │ gzip:  0.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/BPwxeX1t.js                  1.16 kB │ gzip:  0.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/0jf-DJjp.js                  1.18 kB │ gzip:  0.67 kB
+.svelte-kit/output/client/_app/immutable/chunks/Bjy-W4x2.js                  1.36 kB │ gzip:  0.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/C8sBFYwF.js                  1.38 kB │ gzip:  0.73 kB
+.svelte-kit/output/client/_app/immutable/chunks/CRzLMJPS.js                  1.53 kB │ gzip:  0.80 kB
+.svelte-kit/output/client/_app/immutable/chunks/BTJvsJzf.js                  1.54 kB │ gzip:  0.67 kB
+.svelte-kit/output/client/_app/immutable/nodes/9.3DzRDN0n.js                 1.55 kB │ gzip:  0.82 kB
+.svelte-kit/output/client/_app/immutable/nodes/5.pb2M4bjO.js                 1.62 kB │ gzip:  0.84 kB
+.svelte-kit/output/client/_app/immutable/chunks/a3RmGBea.js                  1.64 kB │ gzip:  0.77 kB
+.svelte-kit/output/client/_app/immutable/chunks/Df4IkyEd.js                  1.68 kB │ gzip:  0.85 kB
+.svelte-kit/output/client/_app/immutable/chunks/Bcc7EKvY.js                  1.75 kB │ gzip:  0.91 kB
+.svelte-kit/output/client/_app/immutable/chunks/hb3Oqc7I.js                  2.44 kB │ gzip:  1.22 kB
+.svelte-kit/output/client/_app/immutable/chunks/DKJ1Gz4e.js                  2.90 kB │ gzip:  1.45 kB
+.svelte-kit/output/client/_app/immutable/chunks/BV_lOLcB.js                  2.90 kB │ gzip:  1.37 kB
+.svelte-kit/output/client/_app/immutable/nodes/7.Cp9ShPgw.js                 3.74 kB │ gzip:  1.70 kB
+.svelte-kit/output/client/_app/immutable/entry/app.BViDmEY9.js               3.84 kB │ gzip:  1.38 kB
+.svelte-kit/output/client/_app/immutable/nodes/11.CyJXT3OQ.js                4.20 kB │ gzip:  1.96 kB
+.svelte-kit/output/client/_app/immutable/nodes/0.Ddx4RmmR.js                 4.29 kB │ gzip:  2.12 kB
+.svelte-kit/output/client/_app/immutable/nodes/8.RuGwYwFn.js                 4.42 kB │ gzip:  2.00 kB
+.svelte-kit/output/client/_app/immutable/nodes/3.D_KoRxm5.js                 5.32 kB │ gzip:  2.28 kB
+.svelte-kit/output/client/_app/immutable/chunks/B3PgZ1WC.js                  8.00 kB │ gzip:  3.05 kB
+.svelte-kit/output/client/_app/immutable/nodes/4.CW9m1EJT.js                15.40 kB │ gzip:  5.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/BSDHRevM.js                 41.61 kB │ gzip: 15.33 kB
+.svelte-kit/output/client/_app/immutable/chunks/-yPQ7MyF.js                 50.27 kB │ gzip: 19.12 kB
+
+✓ built in 249ms
+
+Run [1m[36mnpm run preview[39m[22m to preview your production build locally.
+[1m[36m
+> Using @sveltejs/adapter-static[39m[22m
+Wrote site to "build"
+✔ done

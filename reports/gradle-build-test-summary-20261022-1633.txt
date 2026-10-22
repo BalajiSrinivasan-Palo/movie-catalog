@@ -1,0 +1,6 @@
+JUnit results in build/test-results after the full ./gradlew build (2026-10-22 16:3x)
+service-support  test          tests=  8 failed=0 skipped=0 newest=16:29
+movie-service    test          tests= 76 failed=0 skipped=0 newest=14:15
+movie-service    streamingTest tests=  5 failed=0 skipped=0 newest=16:29
+people-service   test          tests= 27 failed=0 skipped=0 newest=15:06
+api-gateway      test          tests= 55 failed=0 skipped=0 newest=14:34

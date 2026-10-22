@@ -1,0 +1,257 @@
+# Movie Catalog GraphQL schema: the only API the browser uses for data (NFR-ARCH-03).
+# Image bytes are delivered by cacheable GET endpoints (ADR-007, approved as D10);
+# this schema returns their URLs.
+# Errors: see docs/architecture/architecture.md "Error handling".
+# Every failure has extensions.code, optional extensions.fieldErrors, extensions.correlationId.
+
+"Calendar date, ISO-8601 (YYYY-MM-DD)."
+scalar Date
+"Timestamp, ISO-8601 UTC."
+scalar DateTime
+"File part of a GraphQL multipart request (graphql-multipart-request-spec)."
+scalar Upload
+
+enum Genre {
+  ACTION
+  ADVENTURE
+  ANIMATION
+  COMEDY
+  CRIME
+  DOCUMENTARY
+  DRAMA
+  FANTASY
+  HORROR
+  MYSTERY
+  ROMANCE
+  SCI_FI
+  THRILLER
+  WAR
+  WESTERN
+}
+
+enum CreditRole {
+  ACTOR
+  DIRECTOR
+  WRITER
+  PRODUCER
+}
+
+enum PersonStatus {
+  RESOLVED
+  NOT_FOUND
+  UNAVAILABLE
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+enum MovieSortField {
+  TITLE
+  RELEASE_YEAR
+}
+
+enum PersonSortField {
+  NAME
+}
+
+type Query {
+  "Paged, sortable, filterable list of movies (FR-MOV-01, FR-MOV-06)."
+  movies(filter: MovieFilter, sort: MovieSort, page: PageInput): MoviePage!
+  "NOT_FOUND error if absent (FR-MOV-02)."
+  movie(id: ID!): Movie!
+  "Paged list of people (FR-PPL-01). `query` filters by name (substring, case-insensitive) for the person picker."
+  people(query: String, sort: PersonSort, page: PageInput): PersonPage!
+  "NOT_FOUND error if absent (FR-PPL-05)."
+  person(id: ID!): Person!
+  "Grouped search over movies and people (FR-SRC-01..04)."
+  search(query: String!, movies: PageInput, people: PageInput): SearchResult!
+  "Single-group paging for 'show more' (FR-SRC-04)."
+  searchMovies(query: String!, page: PageInput): MoviePage!
+  searchPeople(query: String!, page: PageInput): PersonPage!
+  "Backend status for the UI footer and run checks."
+  health: [ServiceHealth!]!
+}
+
+type Mutation {
+  createMovie(input: MovieInput!): Movie!
+  "Full replacement of all editable fields."
+  updateMovie(id: ID!, input: MovieInput!): Movie!
+  "Deletes the movie, its credits and artwork. Returns the deleted id."
+  deleteMovie(id: ID!): ID!
+
+  "Sent as a multipart request; the client reports progress (FR-ART-01..03)."
+  uploadArtwork(movieId: ID!, file: Upload!): Movie!
+  removeArtwork(movieId: ID!): Movie!
+
+  createPerson(input: PersonInput!): Person!
+  "Full replacement of all editable fields."
+  updatePerson(id: ID!, input: PersonInput!): Person!
+  "Fails with code CONFLICT and blockingMovies when the person has credits (BR-05)."
+  deletePerson(id: ID!): ID!
+
+  "Unknown person: VALIDATION_FAILED with fieldErrors[{field: personId, messageKey: credit.person.not_found}]."
+  addCredit(movieId: ID!, input: CreditInput!): Credit!
+  updateCredit(id: ID!, input: CreditUpdateInput!): Credit!
+  removeCredit(id: ID!): ID!
+}
+
+# ---------- Movies ----------
+
+type Movie {
+  id: ID!
+  title: String!
+  releaseYear: Int!
+  runtimeMinutes: Int
+  synopsis: String!
+  genres: [Genre!]!
+  artwork: Artwork
+  "Up to 200 credits, ordered by role then creation time. Person is null if it no longer exists (BR-07)."
+  credits: [Credit!]!
+  creditCount: Int!
+  creditsTruncated: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Artwork {
+  "Thumbnail URL for lists (FR-ART-05)."
+  thumbnailUrl: String!
+  "Original image URL for detail pages."
+  url: String!
+  width: Int!
+  height: Int!
+  contentType: String!
+  sizeBytes: Int!
+}
+
+input MovieInput {
+  title: String!
+  releaseYear: Int!
+  runtimeMinutes: Int
+  synopsis: String = ""
+  genres: [Genre!] = []
+}
+
+input MovieFilter {
+  genre: Genre @deprecated(reason: "Use genres. Kept for older clients; combined with genres.")
+  "A movie matches when it has any of these genres (S-702, ADR-015). Empty or missing means no genre filter."
+  genres: [Genre!]
+  yearFrom: Int
+  yearTo: Int
+}
+
+input MovieSort {
+  field: MovieSortField = TITLE
+  direction: SortDirection = ASC
+}
+
+type MoviePage {
+  items: [Movie!]!
+  pageInfo: PageInfo!
+}
+
+# ---------- People ----------
+
+type Person {
+  id: ID!
+  name: String!
+  birthDate: Date
+  bio: String!
+  "Credits of this person with movie summaries (FR-PPL-05), paged."
+  filmography(page: PageInput): FilmographyPage!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input PersonInput {
+  name: String!
+  birthDate: Date
+  bio: String = ""
+}
+
+input PersonSort {
+  field: PersonSortField = NAME
+  direction: SortDirection = ASC
+}
+
+type PersonPage {
+  items: [Person!]!
+  pageInfo: PageInfo!
+}
+
+# ---------- Credits ----------
+
+type Credit {
+  id: ID!
+  role: CreditRole!
+  "Only for ACTOR."
+  characterName: String
+  "RESOLVED, NOT_FOUND (shown as 'Unknown person', BR-07) or UNAVAILABLE (degraded lookup with retry, EC-15)."
+  personStatus: PersonStatus!
+  "Null unless personStatus is RESOLVED."
+  person: Person
+  personId: ID!
+  movieId: ID!
+}
+
+input CreditInput {
+  personId: ID!
+  role: CreditRole!
+  characterName: String
+}
+
+input CreditUpdateInput {
+  role: CreditRole!
+  characterName: String
+}
+
+type FilmographyEntry {
+  creditId: ID!
+  role: CreditRole!
+  characterName: String
+  movie: MovieSummary!
+}
+
+type MovieSummary {
+  id: ID!
+  title: String!
+  releaseYear: Int!
+  thumbnailUrl: String
+}
+
+type FilmographyPage {
+  items: [FilmographyEntry!]!
+  pageInfo: PageInfo!
+}
+
+# ---------- Search ----------
+
+type SearchResult {
+  movies: MoviePage!
+  people: PersonPage!
+}
+
+# ---------- Operations ----------
+
+type ServiceHealth {
+  service: String!
+  status: String!
+  detail: String
+}
+
+# ---------- Shared ----------
+
+"Zero-based page index; size 1..100, default 20 (BRD section 7)."
+input PageInput {
+  page: Int = 0
+  size: Int = 20
+}
+
+type PageInfo {
+  page: Int!
+  size: Int!
+  totalElements: Int!
+  totalPages: Int!
+}

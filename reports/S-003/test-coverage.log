@@ -1,0 +1,31 @@
+
+> frontend@0.0.1 test:coverage /home/claude/fe-work/frontend
+> vitest --run --coverage
+
+
+ RUN  v4.1.12 /home/claude/fe-work/frontend
+      Coverage enabled with v8
+
+
+ Test Files  10 passed (10)
+      Tests  99 passed (99)
+   Start at  00:16:49
+   Duration  15.97s (transform 1.29s, setup 3.74s, import 787ms, tests 1.57s, environment 7.19s)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |     100 |    96.82 |     100 |     100 |                   
+ lib               |     100 |     87.5 |     100 |     100 |                   
+  messages.ts      |     100 |     87.5 |     100 |     100 | 54                
+ lib/api           |     100 |    97.77 |     100 |     100 |                   
+  client.ts        |     100 |    97.77 |     100 |     100 | 106               
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 96/96 )
+Branches     : 96.82% ( 61/63 )
+Functions    : 100% ( 25/25 )
+Lines        : 100% ( 83/83 )
+================================================================================

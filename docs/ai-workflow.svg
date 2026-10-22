@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 950" width="1280" height="950" role="img" aria-labelledby="t d" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <title id="t">How Claude Code was used to build Movie Catalog</title>
+  <desc id="d">The Technical Assessment PDF is analysed into an assessment analysis, then BRD and NFR, architecture with ADRs, the backlog and refinement, with the owner approving each step in the decisions log. Each story then runs a three-agent pipeline coordinated by the main session: story-planner writes the plan and the owner approves it; backend-implementer or frontend-implementer builds it and writes an implementation report, and the owner runs the backend Gradle commands; reviewer and security-reviewer check the code against the story and the plan and write a review with a verdict, and the owner picks which findings to fix, which go back to the build step; an approved review with evidence marks the story done. An agent is started by an at-mention, by naming it in a message, or automatically when the task matches its description. Guardrails apply throughout: CLAUDE.md rules, a PreToolUse hook, a pre-commit hook and the traceability check.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#475569"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#DC2626"/></marker>
+    <filter id="s" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0F172A" flood-opacity="0.10"/></filter>
+    <g id="owner"><circle cx="0" cy="-5" r="6" fill="#F59E0B"/><path d="M-9 9 C-9 2 -5 0 0 0 C5 0 9 2 9 9 Z" fill="#F59E0B"/></g>
+  </defs>
+  <rect width="1280" height="950" rx="24" fill="#FFFFFF"/>
+  <text x="40" y="54" font-size="26" font-weight="700" fill="#0F172A">How the AI tooling was used</text>
+  <text x="40" y="80" font-size="15" fill="#64748B">Spec first, one story at a time, one agent per step, the owner decides between steps, nothing is "done" without saved command output</text>
+
+  <!-- ===== 1. Specification ===== -->
+  <text x="40" y="124" font-size="13" font-weight="700" fill="#475569" letter-spacing="0.5">1 · FROM THE ASSESSMENT TO A BACKLOG OF STORIES</text>
+  <g filter="url(#s)"><rect x="40" y="140" width="150" height="92" rx="14" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/></g>
+  <path d="M100 156 h22 l10 10 v26 h-32 z" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+  <text x="115" y="214" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A">Technical</text>
+  <text x="115" y="226" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A">Assessment.pdf</text>
+  <g font-size="13" text-anchor="middle">
+    <g filter="url(#s)">
+      <rect x="220" y="140" width="190" height="92" rx="14" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+      <rect x="430" y="140" width="190" height="92" rx="14" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+      <rect x="640" y="140" width="190" height="92" rx="14" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+      <rect x="850" y="140" width="190" height="92" rx="14" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+      <rect x="1060" y="140" width="180" height="92" rx="14" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+    </g>
+    <text x="315" y="172" font-weight="700" fill="#1E3A8A">Analysis</text>
+    <text x="315" y="192" fill="#1D4ED8">assessment-analysis.md</text>
+    <text x="315" y="207" fill="#1D4ED8">questions for the owner</text>
+    <text x="525" y="172" font-weight="700" fill="#1E3A8A">Requirements</text>
+    <text x="525" y="192" fill="#1D4ED8">BRD.md · NFR.md</text>
+    <text x="525" y="207" fill="#1D4ED8">traceability matrix</text>
+    <text x="735" y="172" font-weight="700" fill="#1E3A8A">Architecture</text>
+    <text x="735" y="192" fill="#1D4ED8">architecture.md</text>
+    <text x="735" y="207" fill="#1D4ED8">15 ADRs · contracts</text>
+    <text x="945" y="172" font-weight="700" fill="#1E3A8A">Backlog</text>
+    <text x="945" y="192" fill="#1D4ED8">epics · 38 stories</text>
+    <text x="945" y="207" fill="#1D4ED8">acceptance criteria</text>
+    <text x="1150" y="172" font-weight="700" fill="#1E3A8A">Refinement</text>
+    <text x="1150" y="192" fill="#1D4ED8">refinement.md</text>
+    <text x="1150" y="207" fill="#1D4ED8">changes C-1 to C-8</text>
+  </g>
+  <g stroke="#475569" stroke-width="2" marker-end="url(#a)">
+    <line x1="190" y1="186" x2="216" y2="186"/><line x1="410" y1="186" x2="426" y2="186"/><line x1="620" y1="186" x2="636" y2="186"/>
+    <line x1="830" y1="186" x2="846" y2="186"/><line x1="1040" y1="186" x2="1056" y2="186"/>
+  </g>
+  <g font-size="11.5" font-weight="700" text-anchor="middle" fill="#065F46">
+    <rect x="225" y="244" width="390" height="24" rx="12" fill="#D1FAE5" stroke="#10B981"/>
+    <text x="420" y="260">requirements-analyst</text>
+    <rect x="640" y="244" width="190" height="24" rx="12" fill="#D1FAE5" stroke="#10B981"/>
+    <text x="735" y="260" font-size="10.5">architect · grpc-graphql-specialist</text>
+    <rect x="855" y="244" width="380" height="24" rx="12" fill="#D1FAE5" stroke="#10B981"/>
+    <text x="1045" y="260">requirements-analyst · test-engineer</text>
+  </g>
+  <g filter="url(#s)"><rect x="220" y="282" width="1020" height="40" rx="12" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/></g>
+  <use href="#owner" x="246" y="304"/>
+  <text x="266" y="307" font-size="13.5" font-weight="700" fill="#78350F">Owner approves every document</text>
+  <text x="508" y="307" font-size="13" fill="#92400E">answers open questions and decides; every decision is logged in decisions-log.md (D1 to D26)</text>
+  <line x1="640" y1="322" x2="640" y2="354" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- ===== 2. Story pipeline ===== -->
+  <text x="40" y="380" font-size="13" font-weight="700" fill="#475569" letter-spacing="0.5">2 · ONE PIPELINE PER STORY: ONE AGENT PER STEP, THE OWNER BETWEEN STEPS (story-workflow skill, D26)</text>
+  <rect x="40" y="394" width="1200" height="300" rx="20" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="8 7"/>
+
+  <!-- coordinator bar -->
+  <rect x="64" y="410" width="1152" height="34" rx="10" fill="#F0FDFA" stroke="#14B8A6" stroke-width="1.5"/>
+  <text x="84" y="432" font-size="13" font-weight="700" fill="#115E59">Main session = coordinator</text>
+  <text x="290" y="432" font-size="12.5" fill="#0F766E">starts each agent with the story ID only, shows the owner the result and waits; never writes the plan, code or review</text>
+
+  <!-- step boxes -->
+  <g filter="url(#s)">
+    <rect x="64" y="462" width="214" height="148" rx="16" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+    <rect x="392" y="462" width="262" height="148" rx="16" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+    <rect x="768" y="462" width="248" height="148" rx="16" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+    <rect x="1130" y="462" width="86" height="148" rx="16" fill="#F0FDF4" stroke="#16A34A" stroke-width="2"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="171" y="486" font-size="12" font-weight="700" fill="#059669">STEP 1</text>
+    <text x="171" y="508" font-size="17" font-weight="700" fill="#064E3B">Plan</text>
+    <rect x="111" y="518" width="120" height="24" rx="12" fill="#10B981"/>
+    <text x="171" y="535" font-size="12" font-weight="700" fill="#FFFFFF">story-planner</text>
+    <text x="171" y="562" font-size="12" fill="#065F46">reads the story, its</text>
+    <text x="171" y="578" font-size="12" fill="#065F46">requirements, ADRs and</text>
+    <text x="171" y="594" font-size="12" fill="#065F46">the code it will change</text>
+
+    <text x="523" y="486" font-size="12" font-weight="700" fill="#059669">STEP 2</text>
+    <text x="523" y="508" font-size="17" font-weight="700" fill="#064E3B">Build from the plan</text>
+    <rect x="404" y="518" width="134" height="24" rx="12" fill="#10B981"/>
+    <text x="471" y="535" font-size="11.5" font-weight="700" fill="#FFFFFF">backend-implementer</text>
+    <rect x="544" y="518" width="100" height="24" rx="12" fill="#10B981"/>
+    <text x="594" y="535" font-size="11.5" font-weight="700" fill="#FFFFFF">frontend-impl.</text>
+    <text x="523" y="562" font-size="11.5" fill="#065F46">kotlin-spring-boot · grpc-contracts</text>
+    <text x="523" y="578" font-size="11.5" fill="#065F46">graphql-schema · sveltekit-typescript</text>
+    <text x="523" y="594" font-size="11.5" fill="#065F46">tests named after ACs · quality-gates</text>
+
+    <text x="892" y="486" font-size="12" font-weight="700" fill="#059669">STEP 3</text>
+    <text x="892" y="508" font-size="17" font-weight="700" fill="#064E3B">Independent review</text>
+    <rect x="784" y="518" width="88" height="24" rx="12" fill="#10B981"/>
+    <text x="828" y="535" font-size="12" font-weight="700" fill="#FFFFFF">reviewer</text>
+    <rect x="878" y="518" width="126" height="24" rx="12" fill="#10B981"/>
+    <text x="941" y="535" font-size="12" font-weight="700" fill="#FFFFFF">security-reviewer</text>
+    <text x="892" y="562" font-size="12" fill="#065F46">code vs story and plan</text>
+    <text x="892" y="578" font-size="12" fill="#065F46">every AC, every plan task</text>
+    <text x="892" y="594" font-size="12" fill="#065F46">findings with file and line</text>
+
+    <path d="M1158 506 l10 10 l20 -22" fill="none" stroke="#16A34A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1173" y="546" font-size="17" font-weight="700" fill="#14532D">Done</text>
+    <text x="1173" y="568" font-size="11.5" fill="#166534">APPROVED</text>
+    <text x="1173" y="583" font-size="11.5" fill="#166534">+ saved</text>
+    <text x="1173" y="598" font-size="11.5" fill="#166534">evidence</text>
+  </g>
+
+  <!-- owner gates between steps -->
+  <g filter="url(#s)">
+    <rect x="290" y="500" width="90" height="72" rx="12" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+    <rect x="666" y="500" width="90" height="72" rx="12" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+    <rect x="1028" y="500" width="90" height="72" rx="12" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/>
+  </g>
+  <use href="#owner" x="335" y="520"/><use href="#owner" x="711" y="520"/><use href="#owner" x="1073" y="520"/>
+  <g font-size="11.5" font-weight="700" text-anchor="middle" fill="#78350F">
+    <text x="335" y="546">owner</text><text x="335" y="561">approves plan</text>
+    <text x="711" y="546">owner runs</text><text x="711" y="561">Gradle (D15)</text>
+    <text x="1073" y="546">owner picks</text><text x="1073" y="561">findings</text>
+  </g>
+  <g stroke="#475569" stroke-width="2" marker-end="url(#a)">
+    <line x1="278" y1="536" x2="286" y2="536"/><line x1="380" y1="536" x2="388" y2="536"/>
+    <line x1="654" y1="536" x2="662" y2="536"/><line x1="756" y1="536" x2="764" y2="536"/>
+    <line x1="1016" y1="536" x2="1024" y2="536"/><line x1="1118" y1="536" x2="1126" y2="536"/>
+  </g>
+
+  <!-- hand-off files -->
+  <g font-size="11.5" text-anchor="middle">
+    <rect x="64" y="622" width="214" height="24" rx="12" fill="#EFF6FF" stroke="#3B82F6"/>
+    <text x="171" y="638" fill="#1D4ED8"><tspan font-weight="700">writes</tspan> docs/plans/S-xxx.md · Draft</text>
+    <rect x="392" y="622" width="262" height="24" rx="12" fill="#EFF6FF" stroke="#3B82F6"/>
+    <text x="523" y="638" fill="#1D4ED8"><tspan font-weight="700">writes</tspan> code · tests · implementation.md</text>
+    <rect x="768" y="622" width="248" height="24" rx="12" fill="#EFF6FF" stroke="#3B82F6"/>
+    <text x="892" y="638" fill="#1D4ED8"><tspan font-weight="700">writes</tspan> reports/S-xxx/review.md · verdict</text>
+  </g>
+
+  <!-- changes required loop -->
+  <path d="M892 646 C892 672 523 672 523 650" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#r)"/>
+  <rect x="590" y="662" width="236" height="20" rx="10" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="708" y="676" text-anchor="middle" font-size="11.5" font-weight="700" fill="#DC2626">changes required go back to step 2</text>
+
+  <!-- ===== 3. How an agent is picked ===== -->
+  <text x="40" y="726" font-size="13" font-weight="700" fill="#475569" letter-spacing="0.5">3 · HOW THE MAIN SESSION PICKS AN AGENT</text>
+  <g font-size="12.5" text-anchor="middle">
+    <g filter="url(#s)">
+      <rect x="40" y="738" width="380" height="50" rx="14" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+      <rect x="450" y="738" width="380" height="50" rx="14" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+      <rect x="860" y="738" width="380" height="50" rx="14" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+    </g>
+    <text x="230" y="759" font-weight="700" fill="#064E3B">@-mention: always runs that agent</text>
+    <text x="230" y="777" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="12" fill="#065F46">@agent-reviewer review S-701</text>
+    <text x="640" y="759" font-weight="700" fill="#064E3B">Name it: usually followed</text>
+    <text x="640" y="777" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="12" fill="#065F46">"Use the story-planner agent on S-703"</text>
+    <text x="1050" y="759" font-weight="700" fill="#064E3B">Automatic: by its description</text>
+    <text x="1050" y="777" fill="#065F46">"Use when a story has no plan yet" → story-planner</text>
+  </g>
+
+  <!-- ===== 4. Guardrails ===== -->
+  <text x="40" y="822" font-size="13" font-weight="700" fill="#475569" letter-spacing="0.5">4 · GUARDRAILS THAT ARE ALWAYS ON</text>
+  <g font-size="12.5" text-anchor="middle">
+    <g filter="url(#s)">
+      <rect x="40" y="834" width="280" height="58" rx="14" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/>
+      <rect x="340" y="834" width="290" height="58" rx="14" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/>
+      <rect x="650" y="834" width="280" height="58" rx="14" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/>
+      <rect x="950" y="834" width="290" height="58" rx="14" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/>
+    </g>
+    <text x="180" y="858" font-weight="700" fill="#0F172A">CLAUDE.md</text>
+    <text x="180" y="877" fill="#475569">7 standing rules: evidence, approvals</text>
+    <text x="485" y="858" font-weight="700" fill="#0F172A">PreToolUse hook · guard-bash.sh</text>
+    <text x="485" y="877" fill="#475569">blocks rm -rf, skipped hooks, force push…</text>
+    <text x="790" y="858" font-weight="700" fill="#0F172A">git pre-commit hook</text>
+    <text x="790" y="877" fill="#475569">runs scripts/verify.sh on every commit</text>
+    <text x="1095" y="858" font-weight="700" fill="#0F172A">check_traceability.py</text>
+    <text x="1095" y="877" fill="#475569">every requirement → story → test</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="12.5" fill="#334155">
+    <rect x="40" y="914" width="16" height="16" rx="4" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/><text x="64" y="927">AI agent or skill</text>
+    <rect x="200" y="914" width="16" height="16" rx="4" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2"/><text x="224" y="927">the owner decides</text>
+    <rect x="370" y="914" width="16" height="16" rx="4" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/><text x="394" y="927">a document or report</text>
+    <rect x="550" y="914" width="16" height="16" rx="4" fill="#F0FDFA" stroke="#14B8A6" stroke-width="2"/><text x="574" y="927">main session</text>
+    <rect x="700" y="914" width="16" height="16" rx="4" fill="#F1F5F9" stroke="#64748B" stroke-width="2"/><text x="724" y="927">input, rule or check</text>
+  </g>
+</svg>

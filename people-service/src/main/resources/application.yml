@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: people-service
+  datasource:
+    url: jdbc:h2:file:${PEOPLE_DB_PATH:./data/people-db};AUTO_SERVER=FALSE
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: none # the schema belongs to Liquibase, never to Hibernate (NFR-REL-04); tests exercise every mapping
+    open-in-view: false
+    properties:
+      # Bind LocalDate to the DATE column as a date, not through java.sql.Date and the JVM's time zone:
+      # in zones with an old local-mean-time offset (Asia/Singapore before 1905) that stored 1894-09-20
+      # as 1894-09-19.
+      hibernate.type.java_time_use_direct_jdbc: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+server:
+  port: ${PEOPLE_HTTP_PORT:8082} # Actuator health only; the API is gRPC
+
+grpc:
+  server:
+    port: ${PEOPLE_SERVICE_GRPC_PORT:9092}
+    bind-address: ${GRPC_BIND_ADDRESS:127.0.0.1} # loopback unless the container setup sets it
+    max-inbound-message-bytes: 1048576 # 1 MiB; artwork travels as 64 KiB chunks (NFR-SEC-06)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  pattern:
+    level: "%5p [%X{correlationId:-}]"
+
+movie-service:
+  target: ${MOVIE_SERVICE_TARGET:127.0.0.1:${MOVIE_SERVICE_GRPC_PORT:9091}}
+  deadline-ms: 2000

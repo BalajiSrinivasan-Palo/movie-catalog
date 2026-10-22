@@ -19,22 +19,21 @@ The diagram is `docs/architecture/architecture.svg` (hand-drawn SVG, edit it dir
 
 ### Starting from a machine with nothing installed
 
-You need git, make, JDK 21, Node 22 or newer, pnpm 10 and Python 3. The Gradle wrapper (`./gradlew`) is in the repository, so Gradle itself is not needed. `make setup` first runs `make doctor` (`scripts/doctor.sh`), which lists what is missing and how to install it, and enables pnpm through Corepack (it ships with Node). It installs nothing system-wide.
+You need git and make to start (on macOS, `xcode-select --install` provides both). `make setup` does the rest: `scripts/doctor.sh --install` checks for git, curl, Python 3, Node 22 or newer, pnpm 10 and JDK 21, lists what is missing, shows the exact install commands and asks `Install now? [Y/n]`. It ends with what was already present, what it installed and what is still missing. The Gradle wrapper (`./gradlew`) is in the repository, so Gradle itself is not needed.
 
-| Step         | macOS                            | Ubuntu / Debian                                                                                         | Windows                                                                                                                  |
-| ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| git and make | `xcode-select --install`         | `sudo apt install git make curl python3`                                                                | Use WSL 2 with Ubuntu, then follow the Ubuntu column inside it. The scripts are bash and do not run in plain PowerShell. |
-| JDK 21       | `brew install --cask temurin@21` | `sudo apt install openjdk-21-jdk`                                                                       | inside WSL, as Ubuntu                                                                                                    |
-| Node 22      | `brew install node@22`           | `nvm install 22` ([nvm](https://github.com/nvm-sh/nvm)) or [nodejs.org](https://nodejs.org/en/download) | inside WSL, as Ubuntu                                                                                                    |
-| pnpm 10      | done by `make setup`             | done by `make setup`                                                                                    | done by `make setup`                                                                                                     |
+- **macOS:** installs through Homebrew (`brew install python`, `node@22`, `--cask temurin@21`) and installs Homebrew first if it is missing. Homebrew may ask for your password.
+- **Ubuntu / Debian:** installs through `sudo apt-get` (Node 22 from NodeSource).
+- **Windows:** use WSL 2 with Ubuntu and run everything inside it; the scripts are bash and do not run in plain PowerShell.
+- **pnpm:** enabled through Corepack, which ships with Node.
+- **No terminal to ask on** (for example a CI job): set `AUTO_INSTALL=1` to install without asking. `make doctor` only checks and never installs.
 
-[Homebrew](https://brew.sh) provides `brew` on macOS. Open a new terminal after installing, so the new tools are on your `PATH`. If `make setup` says it cannot enable pnpm, run `sudo corepack enable pnpm` or `npm install -g pnpm@10`. The first `make dev` downloads Gradle and the project's libraries, so it needs internet access and takes a few minutes.
+On Ubuntu without `make`: `sudo apt install make git`. Open a new terminal after `make setup` if it installed Node, so the new tools are on your `PATH`. The first `make dev` downloads Gradle and the project's libraries, so it needs internet access and takes a few minutes.
 
 With only Docker installed, `make docker-up` builds and runs everything in containers on http://localhost:8088. This path is optional and not verified (see the targets table).
 
 ```bash
 git clone https://github.com/BalajiSrinivasan-Palo/movie-catalog.git && cd movie-catalog
-make setup        # once: checks the tools, then frontend packages, the Playwright browser and the git hooks
+make setup        # once: installs missing tools (asks first), then frontend packages, the Playwright browser and the git hooks
 make dev          # start movie-service, people-service, api-gateway and the frontend in the background
 make dev-check    # wait until all four answer ("all four are up"); fails after 120 s
 make seed         # load the sample films, people, credits and posters (safe to run again)
@@ -71,36 +70,36 @@ curl -s http://localhost:8080/graphql -H 'Content-Type: application/json' -d '{"
 
 `make` (or `make help`) prints this list. Each target runs only the commands shown in this README, so you can also run those directly.
 
-| Target                                                     | What it does                                                                                    |
-| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| **Run**                                                    |                                                                                                 |
-| `make doctor`                                              | Check JDK 21, Node 22, pnpm and Python 3; print install commands for what is missing            |
-| `make setup`                                               | Run `make doctor`, then install frontend packages, the Playwright browser and the git hooks     |
-| `make dev`                                                 | Start the three services and the Vite dev server in the background                              |
-| `make dev-check`                                           | Wait until all four parts answer                                                                |
-| `make dev-stop`                                            | Stop what `make dev` started                                                                    |
-| `make seed`                                                | Load the sample data into the running stack (safe to run twice)                                 |
-| **Build and test**                                         |                                                                                                 |
-| `make build`                                               | Build backend and frontend (runs the backend tests too)                                         |
-| `make test`                                                | All unit and integration tests (`backend-test` and `frontend-test`)                             |
-| `make backend-test`                                        | Backend tests, including the memory-bounded upload streaming test                               |
-| `make streaming`                                           | Only the artwork streaming test (128 MB heap)                                                   |
-| `make frontend-check`                                      | Type check and lint the frontend                                                                |
-| `make frontend-test`                                       | Frontend unit and component tests with the coverage gate                                        |
-| `make frontend-build`                                      | Static frontend build                                                                           |
-| `make e2e-mocked`                                          | Layout and accessibility browser tests against a mocked API (no backend needed)                 |
-| `make e2e`                                                 | Browser journeys against the real stack on a fresh temporary data directory                     |
-| `make perf`                                                | Load 1,000 movies and people and time the API (stack must be running); writes `reports/perf.md` |
-| **Quality gates**                                          |                                                                                                 |
-| `make verify`                                              | Every gate that applies; writes `reports/verify-*.log`                                          |
-| `make traceability`                                        | Requirement to story to test check                                                              |
-| `make secrets`                                             | Scan the working tree for secrets                                                               |
-| `make quality`                                             | ktlint, detekt and the Kover coverage gate (opt-in, unverified; see below)                      |
-| `make format`                                              | Fix Kotlin and frontend formatting                                                              |
-| **Other**                                                  |                                                                                                 |
-| `make wrapper`                                             | Re-create the Gradle wrapper (needs a local Gradle 9.8)                                         |
-| `make docker-config`, `make docker-up`, `make docker-down` | Optional containers, app on http://localhost:8088 (unverified, see below)                       |
-| `make clean`                                               | Remove build output (keeps `data/` and `reports/`)                                              |
+| Target                                                     | What it does                                                                                         |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Run**                                                    |                                                                                                      |
+| `make doctor`                                              | Check JDK 21, Node 22, pnpm and Python 3 and print install commands; installs nothing                |
+| `make setup`                                               | Install missing tools (asks first), then frontend packages, the Playwright browser and the git hooks |
+| `make dev`                                                 | Start the three services and the Vite dev server in the background                                   |
+| `make dev-check`                                           | Wait until all four parts answer                                                                     |
+| `make dev-stop`                                            | Stop what `make dev` started                                                                         |
+| `make seed`                                                | Load the sample data into the running stack (safe to run twice)                                      |
+| **Build and test**                                         |                                                                                                      |
+| `make build`                                               | Build backend and frontend (runs the backend tests too)                                              |
+| `make test`                                                | All unit and integration tests (`backend-test` and `frontend-test`)                                  |
+| `make backend-test`                                        | Backend tests, including the memory-bounded upload streaming test                                    |
+| `make streaming`                                           | Only the artwork streaming test (128 MB heap)                                                        |
+| `make frontend-check`                                      | Type check and lint the frontend                                                                     |
+| `make frontend-test`                                       | Frontend unit and component tests with the coverage gate                                             |
+| `make frontend-build`                                      | Static frontend build                                                                                |
+| `make e2e-mocked`                                          | Layout and accessibility browser tests against a mocked API (no backend needed)                      |
+| `make e2e`                                                 | Browser journeys against the real stack on a fresh temporary data directory                          |
+| `make perf`                                                | Load 1,000 movies and people and time the API (stack must be running); writes `reports/perf.md`      |
+| **Quality gates**                                          |                                                                                                      |
+| `make verify`                                              | Every gate that applies; writes `reports/verify-*.log`                                               |
+| `make traceability`                                        | Requirement to story to test check                                                                   |
+| `make secrets`                                             | Scan the working tree for secrets                                                                    |
+| `make quality`                                             | ktlint, detekt and the Kover coverage gate (opt-in, unverified; see below)                           |
+| `make format`                                              | Fix Kotlin and frontend formatting                                                                   |
+| **Other**                                                  |                                                                                                      |
+| `make wrapper`                                             | Re-create the Gradle wrapper (needs a local Gradle 9.8)                                              |
+| `make docker-config`, `make docker-up`, `make docker-down` | Optional containers, app on http://localhost:8088 (unverified, see below)                            |
+| `make clean`                                               | Remove build output (keeps `data/` and `reports/`)                                                   |
 
 ## Status of this repository
 

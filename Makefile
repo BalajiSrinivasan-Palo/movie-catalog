@@ -7,7 +7,13 @@ SHELL := /bin/bash
 GRADLE := ./gradlew --console=plain
 FRONTEND := cd frontend &&
 
-.PHONY: help wrapper doctor setup build test streaming backend-test frontend-check frontend-test frontend-build \
+# Homebrew's directory, when `make setup` had to install it and the user's shell does not have it yet.
+TOOLS_PATH := $(shell cat data/tools.path 2>/dev/null)
+ifneq ($(TOOLS_PATH),)
+export PATH := $(TOOLS_PATH):$(PATH)
+endif
+
+.PHONY: help wrapper doctor setup setup-frontend build test streaming backend-test frontend-check frontend-test frontend-build \
         verify quality format dev dev-check dev-stop seed e2e e2e-mocked perf traceability secrets \
         docker-config docker-up docker-down clean
 
@@ -19,13 +25,17 @@ help: ## List the targets
 wrapper: ## Create the Gradle wrapper once (needs a local Gradle 9.8 or IntelliJ)
 	gradle wrapper --gradle-version 9.8.2
 
-doctor: ## Check the required tools (JDK 21, Node 22, pnpm, Python 3) and say how to install what is missing
+doctor: ## Check the required tools (JDK 21, Node 22, pnpm, Python 3) without installing anything
 	bash scripts/doctor.sh
 
 # chmod first: a zip download or some file systems drop the executable bit.
-setup: ## Make scripts executable, check tools, then install frontend dependencies, the Playwright browser and the git hooks
+# The second make run re-reads data/tools.path, which doctor.sh writes when it installs Homebrew.
+setup: ## Install missing tools (asks first), then frontend packages, the Playwright browser and the git hooks
 	chmod +x gradlew scripts/*.sh scripts/hooks/*
-	$(MAKE) doctor
+	bash scripts/doctor.sh --install
+	$(MAKE) setup-frontend
+
+setup-frontend:
 	$(FRONTEND) pnpm install
 	$(FRONTEND) pnpm exec playwright install chromium
 	scripts/install-hooks.sh

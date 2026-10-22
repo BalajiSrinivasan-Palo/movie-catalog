@@ -47,11 +47,16 @@ else
 fi
 
 # pnpm 10, enabled through Corepack when Node is there.
+# No download prompt and no stdin: Corepack otherwise waits for a "continue? [Y/n]" answer nobody can see.
+export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 if ! command -v pnpm >/dev/null 2>&1 && command -v corepack >/dev/null 2>&1; then
-  echo "  pnpm not found; enabling it through Corepack..."
-  corepack enable pnpm >/dev/null 2>&1 || true
+  echo "  pnpm not found; enabling it through Corepack (downloads pnpm 10)..."
+  corepack enable pnpm </dev/null >/dev/null 2>&1 || true
+  corepack prepare pnpm@10 --activate </dev/null >/dev/null 2>&1 || true
 fi
-if command -v pnpm >/dev/null 2>&1; then ok "pnpm $(pnpm --version 2>/dev/null)"; else
+if command -v pnpm >/dev/null 2>&1 && pnpm_version="$(pnpm --version </dev/null 2>/dev/null)" && [ -n "$pnpm_version" ]; then
+  ok "pnpm $pnpm_version"
+else
   if command -v node >/dev/null 2>&1; then
     fail "pnpm 10" \
       "Corepack could not enable it. Try: sudo corepack enable pnpm" \

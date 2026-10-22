@@ -82,7 +82,7 @@ format: ## Fix Kotlin formatting with ktlint, and frontend formatting with Prett
 
 # ---- run ------------------------------------------------------------------------------------------------------------
 
-dev: ## Start the three services and the Vite dev server in the background (http://localhost:5173)
+dev: ## Start the three services and the Vite dev server and show progress until all four are up (http://localhost:5173)
 	scripts/dev.sh
 
 dev-check: ## Wait until all four parts answer

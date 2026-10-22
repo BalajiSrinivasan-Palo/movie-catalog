@@ -34,8 +34,8 @@ With only Docker installed, `make docker-up` builds and runs everything in conta
 ```bash
 git clone https://github.com/BalajiSrinivasan-Palo/movie-catalog.git && cd movie-catalog
 make setup        # once: installs missing tools (asks first), then frontend packages, the Playwright browser and the git hooks
-make dev          # start movie-service, people-service, api-gateway and the frontend in the background
-make dev-check    # wait until all four answer ("all four are up"); fails after 120 s
+make dev          # start movie-service, people-service, api-gateway and the frontend; shows progress until all four are up
+make dev-check    # optional: check again that all four answer; fails after 120 s
 make seed         # load the sample films, people, credits and posters (safe to run again)
 ```
 
@@ -45,7 +45,7 @@ Then open **http://localhost:5173**. Logs are in `data/logs/`.
 make dev-stop     # stop everything that make dev started
 ```
 
-`make dev` uses ports 5173, 8080, 8081, 8082, 9091 and 9092. It starts everything in the background, so a part that cannot get its port stops instead of moving to another one, and `make dev-check` reports a timeout; the reason is in `data/logs/`. Stop the old processes with `make dev-stop` and run `make dev` again.
+`make dev` uses ports 5173, 8080, 8081, 8082, 9091 and 9092. It starts the parts in the background and prints each one as it answers, so Ctrl-C stops only the watching and `make dev-stop` stops the parts. It waits up to 10 minutes (the first run downloads Gradle and libraries). A part that cannot get its port stops instead of moving to another one, and `make dev` then prints that part's log and exits with an error. Stop the old processes with `make dev-stop` and run `make dev` again.
 
 ## URLs
 
@@ -75,7 +75,7 @@ curl -s http://localhost:8080/graphql -H 'Content-Type: application/json' -d '{"
 | **Run**                                                    |                                                                                                      |
 | `make doctor`                                              | Check JDK 21, Node 22, pnpm and Python 3 and print install commands; installs nothing                |
 | `make setup`                                               | Install missing tools (asks first), then frontend packages, the Playwright browser and the git hooks |
-| `make dev`                                                 | Start the three services and the Vite dev server in the background                                   |
+| `make dev`                                                 | Start the three services and the Vite dev server, and show progress until all four are up            |
 | `make dev-check`                                           | Wait until all four parts answer                                                                     |
 | `make dev-stop`                                            | Stop what `make dev` started                                                                         |
 | `make seed`                                                | Load the sample data into the running stack (safe to run twice)                                      |

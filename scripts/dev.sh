@@ -76,10 +76,11 @@ case "${1:-start}" in
     mkdir -p "$logs" "$ARTWORK_DIR"; : > "$pids"
     set -m # job control: each background job gets its own process group, so --stop can end it with its children
     # One Gradle invocation runs the three long-lived bootRun tasks side by side.
+    # stdin from /dev/null: a background job that reads the terminal (Vite's keyboard shortcuts) dies with EIO on some systems.
     ./gradlew :movie-service:bootRun :people-service:bootRun :api-gateway:bootRun --parallel --console=plain \
-      > "$logs/backend.log" 2>&1 & echo $! >> "$pids"
+      < /dev/null > "$logs/backend.log" 2>&1 & echo $! >> "$pids"
     # --strictPort: fail instead of moving to 5174 when 5173 is taken (CORS allows FRONTEND_ORIGIN only).
-    (cd frontend && exec pnpm dev --strictPort > "$logs/frontend.log" 2>&1) & echo $! >> "$pids"
+    (cd frontend && exec pnpm dev --strictPort < /dev/null > "$logs/frontend.log" 2>&1) & echo $! >> "$pids"
     echo "Starting movie-service, people-service, api-gateway and the frontend (logs in data/logs/)."
     if [ "${1:-}" = "--no-wait" ]; then
       echo "started. Run: scripts/dev.sh --check   (stop: scripts/dev.sh --stop)"; exit 0

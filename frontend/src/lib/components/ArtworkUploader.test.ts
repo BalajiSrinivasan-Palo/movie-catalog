@@ -152,7 +152,8 @@ describe('ArtworkUploader', () => {
 		setup();
 		expect(zone()).toHaveTextContent('Drag an image here or choose a file');
 		expect(zone()).toHaveTextContent('JPEG, PNG or WebP · up to 5 MB');
-		expect(screen.getByLabelText('Image file (JPEG, PNG or WebP, up to 5 MB)')).toHaveAttribute(
+		// The label also wraps the visible drop text, so match the hidden part by pattern.
+		expect(screen.getByLabelText(/Image file \(JPEG, PNG or WebP, up to 5 MB\)/)).toHaveAttribute(
 			'type',
 			'file'
 		);

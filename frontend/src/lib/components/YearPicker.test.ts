@@ -77,6 +77,8 @@ describe('YearPicker (S-702 AC4 to AC6)', () => {
 		expect(earlier).toHaveAttribute('aria-disabled', 'true');
 		await user.click(earlier);
 		expect(screen.getByText('1888–1899')).toBeInTheDocument();
+		// PageUp is handled on a year button; clicking the disabled arrow left focus on the arrow.
+		screen.getByRole('button', { name: '1890' }).focus();
 		await user.keyboard('{PageUp}');
 		expect(screen.getByRole('button', { name: '1888' })).toHaveFocus(); // clamped
 	});

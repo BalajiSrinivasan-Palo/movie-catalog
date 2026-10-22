@@ -85,7 +85,8 @@
 		onclick={() => (open ? hide(false) : show(checkedIndex()))}
 		onkeydown={buttonKey}
 	>
-		<span class="visually-hidden">Search in: </span>{current.label}
+		<span class="visually-hidden">Search in:</span>
+		{current.label}
 		<span class="chevron" class:up={open} aria-hidden="true"></span>
 	</button>
 	{#if open}
@@ -102,9 +103,8 @@
 						onclick={() => choose(scope.value)}
 						onkeydown={(e) => itemKey(e, i)}
 					>
-						{scope.label}{#if scope.value === 'people'}<span class="hint">
-								(cast and crew)</span
-							>{/if}
+						{scope.label}
+						{#if scope.value === 'people'}<span class="hint">(cast and crew)</span>{/if}
 					</button>
 				</li>
 			{/each}
